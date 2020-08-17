@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_034013) do
+ActiveRecord::Schema.define(version: 2020_08_17_102802) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2020_08_16_034013) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "first_name"
-    t.string "family_name"
+    t.string "last_name"
     t.string "first_name_kana"
-    t.string "family_name_kana"
+    t.string "last_name_kana"
     t.string "post_code"
     t.integer "prefecture_code"
     t.string "city"
