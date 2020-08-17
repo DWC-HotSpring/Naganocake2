@@ -2,7 +2,14 @@
 <p>Find me in app/views/admins/products/show.html.erb</p>
 <h1>商品詳細</h1>
 <%= attachment_image_tag @product, :image, format: 'jpeg' %>
+<br>
 <%= @product.name %>
+<br>
+<%= @product.genre.name %>
+<br>
 <%= @product.description %>
+<br>
 <%= @product.price %>
+<br>
 <%= @product.is_active %>
+<%= link_to "編集する", edit_admins_product_path(@product.id) %>
