@@ -2,8 +2,9 @@
 <p>Find me in app/views/admins/products/new.html.erb</p>
 
 <%= form_with model:[:admins,@product], local: true do |f| %>
-    <p>ジャンル</p>
-    <%= f.text_field :name %>
-    <%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } %>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.text_area :description %></p>
+    <p><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } %></p>
+    <p><%= f.text_field :price %></p>
     <%= f.submit %>
 <% end %>
