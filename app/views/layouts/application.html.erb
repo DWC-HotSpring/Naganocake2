@@ -14,17 +14,17 @@
       <p>logo</p>
         <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "マイページ",customers_registrations_path %>
-            <li><%= link_to "商品一覧",products_path %>
+            <li><%= link_to "マイページ",customers_registrations_path %></li>
+            <li><%= link_to "商品一覧",products_path %></li>
             <li><%= link_to "カート",cart_items_path %></li>
-            <li><%= link_to "ログアウト",destroy_admin_session_path %>
+            <li><%= link_to "ログアウト",destroy_admin_session_path %></li>
           </ul>
         <% else %>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "About",class:'glyphicon glyphicon-link about' %></li>
-            <li><%= link_to "商品一覧",products_path %>
-            <li><%= link_to "新規登録",new_admin_session_pat
-            <li><%= link_to "ログイン"
+            <li><%= link_to "商品一覧",products_path %></li>
+            <li><%= link_to "新規登録",new_admin_session_path %></li>
+            <li><%= link_to "ログイン",admin_session %></li>
           </ul>
         <% end %>
     </header>
