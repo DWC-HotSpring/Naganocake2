@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    has_many :genres
+    belongs_to :genre
     has_many :cart_items
     has_many :order_items
     attachment :image

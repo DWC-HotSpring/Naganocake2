@@ -3,6 +3,8 @@ class Admins::ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+  
   end
 
   def new
@@ -10,7 +12,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-    
+    @product = Product.new(product_prams)
+    @product.save
+    redirect_to admins_product_path(@product)
   end
 
   def edit

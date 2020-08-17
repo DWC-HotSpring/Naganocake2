@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_102802) do
   create_table "order_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "order_id"
-    t.integer "make_status"
+    t.integer "make_status" 
     t.integer "quantity"
     t.integer "purchase_price"
     t.datetime "created_at", null: false
