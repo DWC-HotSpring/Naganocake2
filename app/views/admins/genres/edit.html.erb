@@ -1,0 +1,13 @@
+<h1>Admins::Genres#edit</h1>
+<p>Find me in app/views/admins/genres/edit.html.erb</p>
+
+<p>
+<%= @genre.name %>
+</p>
+
+<%= form_with model:[:admins,@genre], local: true do |f| %>
+    <%= f.text_field :name %>
+        <span>有効</span><%= f.radio_button :is_active, :true %>
+        <span>無効</span><%= f.radio_button :is_active, :false %>
+    <%= f.submit %>
+<% end %>
