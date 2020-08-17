@@ -1,2 +1,8 @@
 <h1>Admins::Products#show</h1>
 <p>Find me in app/views/admins/products/show.html.erb</p>
+<h1>商品詳細</h1>
+<%= attachment_image_tag @product, :image, format: 'jpeg' %>
+<%= @product.name %>
+<%= @product.description %>
+<%= @product.price %>
+<%= @product.is_active %>

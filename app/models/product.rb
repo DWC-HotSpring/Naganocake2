@@ -1,3 +1,4 @@
 class Product < ApplicationRecord
-    has_many :genres
+    belongs_to :genre
+    attachment :image
 end
