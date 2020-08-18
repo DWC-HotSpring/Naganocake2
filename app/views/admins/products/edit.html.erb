@@ -7,5 +7,8 @@
     <p><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] } %></p>
     <p><%= f.text_field :price %></p>
     <p><%= f.select :is_active,[["販売中",true],["売り切れ",false]] %></p>
+    <% if false %>
+          <p><%= f.select :is_active, Product.is_active.keys %></p>
+    <% end %>
     <%= f.submit %>
 <% end %>

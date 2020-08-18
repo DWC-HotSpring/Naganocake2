@@ -19,7 +19,13 @@
                 <td><%= link_to product.name,admins_product_path(product.id) %></td>
                 <td><%= product.price %></td>
                 <td><%= product.genre.name %></td>
-                <td><%= product.is_active %></td>
+                <td>
+                <% if product.is_active == true %>
+                    <%= "販売中" %>
+                <% else %>
+                    <%= "売り切れ" %>
+                <% end %>
+                </td>
             </tr>
         <% end %>
     </tbody>
