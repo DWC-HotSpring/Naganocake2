@@ -33,14 +33,12 @@ class OrdersController < ApplicationController
           @order.addressee = full_name(@customer)
         when 2
           @order.post_code = params[:order][:post_code]
-          @order.send_to_address = params[:order][:send_to_address]
           @order.prefecture_code = params[:order][:prefecture_code]
           @order.city = params[:order][:city]
           @order.block = params[:order][:block]
           @order.addressee = params[:order][:addressee]
         when 3
           @order.post_code = params[:order][:post_code]
-          @order.send_to_address = params[:order][:send_to_address]
           @order.prefecture_code = params[:order][:prefecture_code]
           @order.city = params[:order][:city]
           @order.block = params[:order][:block]
@@ -52,8 +50,10 @@ class OrdersController < ApplicationController
       if Address.find_by(address: @order.send_to_address).nil?
         @address = Address.new
         @address.post_code = @order.post_code
-        @address.address = @order.send_to_address
-        @address.addressee = @order.addressee
+        @address.prefecture_code = @order.prefecture_code
+        @address.city = @order.city
+        @address.block = @order.block
+        @address.name = @order.addressee
         @address.customer_id = current_customer.id
         @address.save
       end
