@@ -1,2 +1,48 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<h1><%= @customer.full_name%>さんの会員情報編集</h1>
+
+<table class="table">
+<%= form_with model:[:admins,@customer], local: true do |f| %>
+<tr>
+<td>
+<%= f.label :id, '顧客ID' %></td>
+<td><%= @customer.id %></td>
+</tr>
+<tr>
+<td><%= f.label :first_name, '氏名' %></td>
+<td><%= f.text_field :first_name%><%= f.text_field :last_name_kana %></td>
+</tr>
+<tr>
+<td><%= f.label :first_name_kana, 'フリガナ' %></td>
+<td><%= f.text_field :first_name_kana %>  <%=f.text_field :last_name_kana %></td>
+</tr>
+<tr>
+<td><%= f.label :postcode, '郵便番号' %></td>
+<td><%= f.text_field :post_code %></td>
+</tr>
+<tr>
+<td><%= f.label :prefecture_name, '都道府県' %></td>
+<td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name%></td>
+</tr>
+<tr>
+<td><%= f.label :city, '市区町村' %></td>
+<td><%= f.text_field :city %></td>
+</tr>
+<tr>
+<td><%= f.label :block, '番地' %></td>
+<td><%= f.text_field :block %></td>
+</tr>
+<td><%= f.label :phone_number, '電話番号' %></td>
+<td><%= f.telephone_field  :phone_number %></td>
+</tr>
+<td><%= f.label :email, 'メールアドレス' %></td>
+<td><%= f.email_field :email %></td>
+</tr>
+<td><%= f.label :is_deleted, '会員ステータス' %></td>
+<td>                   
+    <span>有効</span><%= f.radio_button :is_deleted, :false %>
+    <span>退会済み</span><%= f.radio_button :is_deleted, :true %>
+</td>
+</tr>
+</table>
+<%= f.submit "変更を保存する" %>
+<% end %>
