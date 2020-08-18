@@ -1,2 +1,23 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<table>
+  <tr>
+    <div>
+      <td><%= @product.image_id %></td>
+    </div>
+    <div>
+      <td><%= @product.name %></td>
+    </div>
+    <div>
+      <td><%= @product.description %></td>
+    </div>
+    <div>
+      <td>￥<%= @product.price %>（税込）</td>
+    </div>
+  </tr>
+</table>
+
+<%= form_for(@cart) do |f| %>
+  <%= f.label :quantity, "個数選択" %>
+  <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], include_blank: '個数選択' %>
+  </div>
+  <%= f.submit "カートに入れる", class:"btn btn-danger" %>
+<% end %>
