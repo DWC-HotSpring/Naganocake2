@@ -1,2 +1,14 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<h1>登録情報編集</h1>
+
+<%= form_for(@book) do |f| %>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_field :body %>
+
+  <%= f.submit 'Update Book' %>
+
+  <%=link_to "Show" ,book_path %>
+  <%=link_to "Back" ,books_path %>
+
+<% end %>
