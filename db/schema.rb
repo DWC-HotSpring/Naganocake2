@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_090818) do
+ActiveRecord::Schema.define(version: 2020_08_18_055123) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.string "post_code"
-    t.integer "perfecture_code"
+    t.integer "prefecture_code"
     t.string "city"
     t.string "block"
     t.string "name"
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 2020_08_17_090818) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "first_name"
-    t.string "family_name"
+    t.string "last_name"
     t.string "first_name_kana"
-    t.string "family_name_kana"
+    t.string "last_name_kana"
     t.string "post_code"
     t.integer "prefecture_code"
     t.string "city"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_090818) do
   create_table "order_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "order_id"
-    t.integer "make_status" 
+    t.integer "make_status"
     t.integer "quantity"
     t.integer "purchase_price"
     t.datetime "created_at", null: false
