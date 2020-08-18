@@ -7,7 +7,7 @@
                 <%= f.attachment_field :image %>
             </div>
             <div class ="col-xs-4">
-             <table>
+             <table class="table">
                 <tr>
                     <td>商品名</td>
                     <td><%= f.text_field :name %></td>
@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <td>税抜価格</td>
-                    <td><%= f.text_field :price %></td>
+                    <td><%= f.number_field :price %></td>
                 </tr>
                 <tr>
                     <td>販売ステータス</td>
