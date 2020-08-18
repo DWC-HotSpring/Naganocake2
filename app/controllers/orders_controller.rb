@@ -27,15 +27,23 @@ class OrdersController < ApplicationController
       case @add
         when 1
           @order.post_code = @customer.post_code
-          @order.send_to_address = @customer.address
+          @order.prefecture_code = @customer.prefecture_code
+          @order.city = @customer.city
+          @order.block = @customer.block
           @order.addressee = full_name(@customer)
         when 2
           @order.post_code = params[:order][:post_code]
           @order.send_to_address = params[:order][:send_to_address]
+          @order.prefecture_code = params[:order][:prefecture_code]
+          @order.city = params[:order][:city]
+          @order.block = params[:order][:block]
           @order.addressee = params[:order][:addressee]
         when 3
           @order.post_code = params[:order][:post_code]
           @order.send_to_address = params[:order][:send_to_address]
+          @order.prefecture_code = params[:order][:prefecture_code]
+          @order.city = params[:order][:city]
+          @order.block = params[:order][:block]
           @order.addressee = params[:order][:addressee]
       end
       @order.save
@@ -52,18 +60,18 @@ class OrdersController < ApplicationController
 
       # cart_itemsの内容をorder_itemsに新規登録
       current_customer.cart_items.each do |cart_item|
-        order_item = @order.order_items.build
-        order_item.order_id = @order.id
-        order_item.product_id = cart_item.product_id
-        order_item.quantity = cart_item.quantity
-        order_item.order_price = cart_item.product.price
-        order_item.save
+        order_product = @order.order_products.build
+        order_product.order_id = @order.id
+        order_product.product_id = cart_item.product_id
+        order_product.quantity = cart_item.quantity
+        order_product.purchase_price = cart_item.product.price
+        order_product.save
         cart_item.destroy #order_itemに情報を移したらcart_itemは消去
       end
       render :thanks
     else
-      redirect_to customer_top_path
-　　　flash[:danger] = 'カートが空です。'
+      redirect_to root_path
+      flash[:danger] = 'カートが空です。'
     end
   end
 
