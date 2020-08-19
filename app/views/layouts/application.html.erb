@@ -10,6 +10,13 @@
   </head>
 
   <body>
+  <!-- サクセスメッセージ -->
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+  <!-- ヘッダーのコメントアウト -->
   <% if false %>
   # <header>
   #     <p>logo</p>

@@ -1,48 +1,66 @@
 <h1><%= @customer.full_name%>さんの会員情報編集</h1>
-
-<table class="table">
-<%= form_with model:[:admins,@customer], local: true do |f| %>
-<tr>
-<td>
-<%= f.label :id, '顧客ID' %></td>
-<td><%= @customer.id %></td>
-</tr>
-<tr>
-<td><%= f.label :first_name, '氏名' %></td>
-<td><%= f.text_field :first_name%><%= f.text_field :last_name_kana %></td>
-</tr>
-<tr>
-<td><%= f.label :first_name_kana, 'フリガナ' %></td>
-<td><%= f.text_field :first_name_kana %>  <%=f.text_field :last_name_kana %></td>
-</tr>
-<tr>
-<td><%= f.label :postcode, '郵便番号' %></td>
-<td><%= f.text_field :post_code %></td>
-</tr>
-<tr>
-<td><%= f.label :prefecture_name, '都道府県' %></td>
-<td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name%></td>
-</tr>
-<tr>
-<td><%= f.label :city, '市区町村' %></td>
-<td><%= f.text_field :city %></td>
-</tr>
-<tr>
-<td><%= f.label :block, '番地' %></td>
-<td><%= f.text_field :block %></td>
-</tr>
-<td><%= f.label :phone_number, '電話番号' %></td>
-<td><%= f.telephone_field  :phone_number %></td>
-</tr>
-<td><%= f.label :email, 'メールアドレス' %></td>
-<td><%= f.email_field :email %></td>
-</tr>
-<td><%= f.label :is_deleted, '会員ステータス' %></td>
-<td>                   
-    <span>有効</span><%= f.radio_button :is_deleted, :false %>
-    <span>退会済み</span><%= f.radio_button :is_deleted, :true %>
-</td>
-</tr>
-</table>
-<%= f.submit "変更を保存する" %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class ="col-xs-5 col-xs-offset-1">
+        <%= form_with model:[:admins,@customer], local: true do |f| %>
+            <!-- エラーメッセージ -->
+            <% if @customer.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= @customer.errors.count %>件のエラーが発生しました。</h2>
+                    <ul>
+                        <% @customer.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <!-- エラーメッセージ -->
+            <table class="table">
+                <tr>
+                    <td>
+                        <%= f.label :id, '顧客ID' %>
+                    </td>
+                    <td><%= @customer.id %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :first_name, '氏名' %></td>
+                    <td><%= f.text_field :first_name%><%= f.text_field :last_name_kana %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :first_name_kana, 'フリガナ' %></td>
+                    <td><%= f.text_field :first_name_kana %>  <%=f.text_field :last_name_kana %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :postcode, '郵便番号' %></td>
+                    <td><%= f.text_field :post_code, id: "customer_post_code"%></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :prefecture_name, '都道府県' %></td>
+                    <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "customer_prefecture_code"%></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :city, '市区町村' %></td>
+                    <td><%= f.text_field :city, id:"customer_city" %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :block, '番地' %></td>
+                    <td><%= f.text_field :block, id:"customer_block" %></td>
+                </tr>
+                    <td><%= f.label :phone_number, '電話番号' %></td>
+                    <td><%= f.telephone_field  :phone_number %></td>
+                </tr>
+                    <td><%= f.label :email, 'メールアドレス' %></td>
+                    <td><%= f.email_field :email %></td>
+                </tr>
+                    <td><%= f.label :is_deleted, '会員ステータス' %></td>
+                    <td>                   
+                        <span>有効</span><%= f.radio_button :is_deleted, :false %>
+                        <span>退会済み</span><%= f.radio_button :is_deleted, :true %>
+                    </td>
+                </tr>
+            </table>
+            <%= f.submit "変更を保存する" %>
+        <% end %>
+        </div>
+    </div>
+</div>

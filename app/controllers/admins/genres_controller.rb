@@ -1,4 +1,7 @@
 class Admins::GenresController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_admin
+  
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -24,6 +27,10 @@ class Admins::GenresController < ApplicationController
 
 
   private
+  
+  def set_admin
+    @admin = current_admin
+  end
 
   def genre_params
     params.require(:genre).permit(:name, :is_active)

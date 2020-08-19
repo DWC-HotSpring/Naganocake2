@@ -9,6 +9,21 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :addresses
 
+  #バリデーション(空欄)
+  with_options presence: true do
+    validates :email
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+    validates :post_code
+    validates :prefecture_code
+    validates :city
+    validates :block
+    validates :phone_number
+  end
+
+
   def full_name
     self.first_name + self.last_name
   end

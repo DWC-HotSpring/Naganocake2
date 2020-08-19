@@ -1,7 +1,10 @@
 class Admins::CustomersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_admin
+
   def index
-    @customers = Customer.all
+    @customers = Customer.all.order(created_at: :desc)
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -14,12 +17,20 @@ class Admins::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_parmas)
-    redirect_to admins_customer_path(@customer)
+    if @customer.update(customer_parmas)
+      redirect_to admins_customer_path(@customer), notice: '顧客情報を変更しました'
+    else
+      render :edit
+    end
   end
 
   private
+
+  def set_admin
+    @admin = current_admin
+  end
+
   def customer_parmas
-    params.require(:customer).permit(:email, :first_name, :last_name,:first_name_kana, :last_name_kana,:post_code, :prefecture_code, :city, :block, :phone_number, :is_deleted)
+    params.require(:customer).permit(:email, :first_name, :last_name, :first_name_kana, :last_name_kana,:post_code, :prefecture_code, :city, :block, :phone_number, :is_deleted)
   end
 end
