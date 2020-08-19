@@ -49,17 +49,15 @@ class OrdersController < ApplicationController
       @order.customer_id = current_customer.id
       @order.save
       
-      # addressで住所モデル検索、該当データなければ新規作成
-      if Address.find_by(address: @order.address).nil?
-        @address = Address.new
-        @address.post_code = @order.post_code
-        @address.prefecture_code = @order.prefecture_code
-        @address.city = @order.city
-        @address.block = @order.block
-        @address.name = @order.addressee
-        @address.customer_id = current_customer.id
-        @address.save
-      end
+      # 住所モデル検索から該当データなければ新規作成は必須でない為コメントアウト
+      # @address = Address.new
+      # @address.post_code = @order.post_code
+      # @address.prefecture_code = @order.prefecture_code
+      # @address.city = @order.city
+      # @address.block = @order.block
+      # @address.name = @order.addressee
+      # @address.customer_id = current_customer.id
+      # @address.save
       
       # cart_itemsの内容をorder_productsに新規登録
       current_customer.cart_items.each do |cart_item|
@@ -69,11 +67,12 @@ class OrdersController < ApplicationController
         @order_product.quantity = cart_item.quantity
         @order_product.purchase_price = cart_item.product.price
         @order_product.save
-        @customer.cart_item.destroy_all #order_productに情報を移したらcart_itemは消去
+        @customer.cart_items.destroy_all #order_productに情報を移したらcart_itemは消去
       end
       render :thanks
     else
-      redirect_to root_path
+      # redirect_to root_path # rootパス設定後追加
+      redirect_to products_path
       flash[:danger] = 'カートが空です。'
     end
   end
