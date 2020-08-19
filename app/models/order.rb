@@ -1,10 +1,10 @@
 class Order < ApplicationRecord
   enum order_status: {
-    a: 0,
-    b: 1,
-    c: 2,
-    d: 3,
-    e: 4,
+    waiting: 0,
+    confirmation: 1,
+    making: 2,
+    ready: 3,
+    shipped: 4,
   }
   enum payment_method: {
     credit: 0,
