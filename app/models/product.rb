@@ -6,4 +6,13 @@ class Product < ApplicationRecord
 
     #boolean型はpresence: trueにしてしまうと、falseをblank?メソッドでカラムを空だと認識してエラーとなる
     validates :is_active,  inclusion: { in: [true, false]}
+
+    with_options presence: true do
+        validates :name
+        validates :price
+        validates :genre_id
+        validates :image
+        validates :description
+      end
+
 end
