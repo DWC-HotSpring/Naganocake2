@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+        <%= form_with(model:[@order], local: true, url: {action: 'confirm'}) do |f| %>
 
         <div class="row">
           <h4><%= f.label :支払方法 %></h4>
@@ -19,9 +19,9 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <label><%= f.radio_button :payment_method, 0, checked: true %> クレジットカード</label>
+            <label><%= f.radio_button :payment_method, 'credit', checked: true %> クレジットカード</label>
             <br>
-            <label><%= f.radio_button :payment_method, 1 %> 銀行振込</label>
+            <label><%= f.radio_button :payment_method, 'cash' %> 銀行振込</label>
           </div>
         </div>
 
