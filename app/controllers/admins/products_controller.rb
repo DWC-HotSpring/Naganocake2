@@ -1,4 +1,7 @@
 class Admins::ProductsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_admin
+  
   def index
     @products = Product.all
   end
@@ -29,6 +32,11 @@ class Admins::ProductsController < ApplicationController
   end
 
   private
+
+  def set_admin
+    @admin = current_admin
+  end
+  
   def product_prams
     params.require(:product).permit(:name, :price, :genre_id, :is_active, :description, :image)  
   end
