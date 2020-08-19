@@ -3,6 +3,8 @@ class Admins::OrdersController < ApplicationController
   before_action :set_admin
   
   def index
+    @orders = Order.all.order(created_at: :asc)
+    @orders = Order.page(params[:page]).per(2)
   end
 
   def show
