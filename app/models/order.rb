@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   has_many :order_products
-  has_many :products, through: :order_products
+  has_many :products, :through => :order_products
 
   
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換

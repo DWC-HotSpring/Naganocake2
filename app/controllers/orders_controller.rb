@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_customer
 
   def index
+    @orders = @customer.orders
   end
   
   def show
