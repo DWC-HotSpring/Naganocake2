@@ -20,7 +20,11 @@
                 </tr>
                 <tr>
                     <td>税込価格（税抜価格）</td>
-                    <td><%= @product.price %></td>
+                    <td>
+                        <%= @product.price %>
+                        <span>（<%= price_with_tax(@product.price) %>）</span>
+                        <span>円</span>
+                    </td>
                 </tr>
                 <tr>
                     <td>販売ステータス</td>
