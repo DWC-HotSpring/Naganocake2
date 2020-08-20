@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(:id)
-    @cart_item = Cart_item.new
+    @product = Product.find(params[:id])
+    @cart = @product.cart_items.new
   end
 
 end

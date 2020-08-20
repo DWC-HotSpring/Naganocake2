@@ -66,9 +66,9 @@ class OrdersController < ApplicationController
         @order_product.order_id = @order.id
         @order_product.product_id = cart_item.product_id
         @order_product.quantity = cart_item.quantity
-        @order_product.purchase_price = cart_item.product.price
+        @order_product.purchase_price = price_with_tax(cart_item.product.price)
         @order_product.save
-        @customer.cart_items.destroy #order_productに情報を移したらcart_itemは消去
+        cart_item.destroy #order_productに情報を移したらcart_itemは消去
       end
       render :thanks
     else
