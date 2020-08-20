@@ -1,2 +1,80 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+<div class="container">
+    <div class="row">
+        <div class = "col-xs-10 col-xs-offset-1">
+            <table>
+                <tr>
+                    <td>購入者</td>
+                    <td><%= @order.customer.full_name %></td>
+                </tr>
+                <tr>
+                    <td>配送先</td>
+                    <td><%= @order.address %></td>
+                </tr>
+                <tr>
+                    <td>支払方法</td>
+                    <td><%= @order.payment_method %></td>
+                </tr>
+                <tr>
+                    <td>注文ステータス</td>
+                    <td>
+                        <%= form_with model:[:admins,@order], local: true do |f| %>
+                            <%= f.select :order_status, Order.order_statuses.keys %>
+                            <%= f.submit "更新", class:"btn btn-primary" %>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+        </div>      
+    </div>
+    <div class="row">
+        <div class = "col-xs-6 col-xs-offset-1">
+            <table class= "table">
+                <thead>
+                    <tr>
+                        <td>商品名</td>
+                        <td>単価（税込）</td>
+                        <td>数量</td>
+                        <td>小計</td>
+                        <td>制作ステータス</td>
+                        <td></td>
+                    </tr>
+                </thead>
+            <% sum_all = 0 %>
+            <tbody>
+                <% @order.order_products.each do |order_product| %>
+                    <tr>
+                    <td><%= order_product.product.name %></td>
+                    <td><%= order_product.purchase_price %></td>
+                    <td><%= order_product.quantity %></td>
+                    <td>
+                        <%= sum_product = order_product.purchase_price.to_i * order_product.quantity %>
+                        <% sum_all += sum_product %>
+                    </td>
+                <%= form_with model:[:admins,order_product], local: true do |f| %>
+                    <td><%= f.select :make_status, OrderProduct.make_statuses.keys %></td>
+                    <td><%= f.submit "更新", class:"btn btn-primary" %></td>
+                <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
+        <div class = "col-xs-4 col-xs-offset-1">
+            <table>
+                <tr>
+                    <td>商品合計</td>
+                    <td><%= sum_all %>円</td>
+                </tr>
+                <tr>
+                    <td>送料</td>
+                    <td><%= @order.postage %>円</td>
+                </tr>
+                <tr>
+                    <td>請求金額</td>
+                    <td><%= @order.billing_amount %></td>
+                </tr>
+            </table>
+        </div>   
+    </div>
+</div>
