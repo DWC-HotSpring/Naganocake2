@@ -45,10 +45,10 @@
                 <% @order.order_products.each do |order_product| %>
                     <tr>
                     <td><%= order_product.product.name %></td>
-                    <td><%= price_with_tax(order_product.product.price) %></td>
+                    <td><%= order_product.purchase_price %></td>
                     <td><%= order_product.quantity %></td>
                     <td>
-                        <%= sum_product = price_with_tax(order_product.product.price).to_i * order_product.quantity %>
+                        <%= sum_product = order_product.purchase_price.to_i * order_product.quantity %>
                         <% sum_all += sum_product %>
                     </td>
                 <%= form_with model:[:admins,order_product], local: true do |f| %>
