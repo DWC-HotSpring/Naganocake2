@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   #顧客用サイトのルーティング
   devise_for :customers, :except => :edit
-  resource :controllers, { registrations: 'customers/registrations' }
+  resources :customers, controllers: { registrations: 'registrations' }
   resource :customers, only: [:show]
 
   resources :orders, only: [:new, :index, :create, :show]
