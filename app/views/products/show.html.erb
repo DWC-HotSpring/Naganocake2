@@ -10,7 +10,7 @@
       <td><%= @product.description %></td>
     </div>
     <div>
-      <td>￥<%= @product.price %>（税込）</td>
+      <td>￥<%= price_with_tax(@product.price) %>（税込）</td>
     </div>
   </tr>
 </table>

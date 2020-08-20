@@ -1,2 +1,111 @@
 <h1>Orders#new</h1>
 <p>Find me in app/views/orders/new.html.erb</p>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <h3>注文情報入力</h3>
+          </div>
+        </div>
+
+        <%= form_with(model:[@order], local: true, url: {action: 'confirm'}) do |f| %>
+
+        <div class="row">
+          <h4><%= f.label :支払方法 %></h4>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <label><%= f.radio_button :payment_method, "クレジットカード", checked: true %> クレジットカード</label>
+            <br>
+            <label><%= f.radio_button :payment_method, "銀行振込" %> 銀行振込</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4><%= f.label :お届け先 %></h4>
+        </div>
+
+        <div class="row">
+          <p>
+            <label><%= f.radio_button :add, 1, checked: true %>ご自身の住所</label><br>
+            <%= @customer.post_code %>
+            <%= @customer.address %>
+            <%= @customer.full_name %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p>
+            <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label><br>
+            <%= f.collection_select :address, @customer.addresses, :id, :address %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p><label><%= f.radio_button :add, 3 %>新しいお届け先</label></p>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <%= f.fields_for :new_add do |na| %>
+            <div class="row">
+              <div class="col-lg-3">
+                郵便番号
+              </div>
+              <div class="col-lg-6">
+                <%= na.text_field :post_code%>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3">
+                都道府県
+              </div>
+              <div class="col-lg-6">
+                <%= na.text_field :prefecture_code%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                市
+              </div>
+              <div class="col-lg-6">
+                <%= na.text_field :city%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                番地以降
+              </div>
+              <div class="col-lg-6">
+                <%= na.text_field :block%>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-3">
+                宛名
+              </div>
+              <div class="col-lg-6">
+                <%= na.text_field :addressee%>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-2">
+            <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+          </div>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+</div>
+

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resource :customers, only: [:show]
 
   resources :orders, only: [:new, :index, :create, :show]
-    get 'orders/confirm' => 'orders#confirm'
+    post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
   resources :order_products, only: [:new, :create, :index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy] do
