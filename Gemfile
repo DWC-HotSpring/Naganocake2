@@ -70,3 +70,5 @@ gem "refile-mini_magick"
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'jp_prefecture'
+gem 'rails-i18n'
+gem 'enum_help'

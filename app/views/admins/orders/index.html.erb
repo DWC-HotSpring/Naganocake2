@@ -14,9 +14,9 @@
                 <tbody>
                     <% @orders.each do |order| %>
                         <tr>
-                            <td><%= link_to order.created_at, admins_order_path(order) %></td>
+                            <td><%= link_to simple_time(order[:created_at] ), admins_order_path(order) %></td>
                             <td><%= order.customer.full_name %></td>
-                            <td></td>
+                            <td><%= order.order_products.map {|hash| hash.quantity}.sum %></td>
                             <td><%= order.order_status %></td>
                         </tr>
                     <% end %>
