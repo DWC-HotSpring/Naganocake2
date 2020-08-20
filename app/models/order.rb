@@ -1,19 +1,19 @@
 class Order < ApplicationRecord
   enum order_status: {
-    waiting: 0,
-    confirmation: 1,
-    making: 2,
-    ready: 3,
-    shipped: 4,
+    入金待ち: 0,
+    入金確認: 1,
+    製作中: 2,
+    発送準備中: 3,
+    発送済み: 4,
   }
   enum payment_method: {
-    credit: 0,
-    cash: 1,
+    クレジットカード: 0,
+    銀行振込: 1,
   }
 
   belongs_to :customer
   has_many :order_products
-  has_many :products, :through => :order_products
+  has_many :products, through: :order_products
 
   
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換

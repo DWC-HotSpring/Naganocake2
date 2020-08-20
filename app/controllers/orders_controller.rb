@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
   
   def show
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -15,7 +16,6 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.postage = 800
     @order.payment_method = params[:order][:payment_method]
 
     @add = params[:order][:add].to_i
@@ -62,13 +62,13 @@ class OrdersController < ApplicationController
       
       # cart_itemsの内容をorder_productsに新規登録
       current_customer.cart_items.each do |cart_item|
-        @order_product = OrderProduct.new
+        @order_product = @order.order_products.new
         @order_product.order_id = @order.id
         @order_product.product_id = cart_item.product_id
         @order_product.quantity = cart_item.quantity
         @order_product.purchase_price = cart_item.product.price
         @order_product.save
-        @customer.cart_items.destroy_all #order_productに情報を移したらcart_itemは消去
+        @customer.cart_items.destroy #order_productに情報を移したらcart_itemは消去
       end
       render :thanks
     else
