@@ -42,9 +42,9 @@
       <% @order.order_products.each do |order_product| %>
       <tr>
         <td><%= order_product.product.name %></td>
-        <td><%= price_with_tax(order_product.purchase_price) %>円</td>
+        <td><%= order_product.purchase_price %>円</td>
         <td><%= order_product.quantity %>個</td>
-        <td><%= sub_total = price_with_tax(order_product.purchase_price).to_i * order_product.quantity %>円</td>
+        <td><%= sub_total = order_product.purchase_price.to_i * order_product.quantity %>円</td>
       </tr>
       <% sum_all += sub_total %>
       <% end %>
