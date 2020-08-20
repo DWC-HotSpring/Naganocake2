@@ -1,23 +1,28 @@
-<table>
-  <tr>
-    <div>
-      <td><%= @product.image_id %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "450x350" %>
     </div>
-    <div>
-      <td><%= @product.name %></td>
-    </div>
-    <div>
-      <td><%= @product.description %></td>
-    </div>
-    <div>
-      <td>￥<%= price_with_tax(@product.price) %>（税込）</td>
-    </div>
-  </tr>
-</table>
+    <div class="col-sm-6 align-self-center">
+      <div class="">
+        <div>
+          <h3><%= @product.name %></h3>
+        </div>
+        <div>
+          <p><%= @product.description %></p>
+        </div>
+        <div>
+          <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込）</p>
+        </div>
+      </div>
 
-<%= form_with(@cart_item) do |f| %>
-  <%= f.label :quantity, "個数選択" %>
-# <%# 個数制限なく選択できるようにする %>
-  <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {include_blank: "個数選択"} %>
-  <%= f.submit "カートに入れる", class:"btn btn-danger" %>
-<% end %>
+      <%= form_with(model: [@product,@cart_item], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
+        <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {include_blank: "個数選択"} %>個
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
