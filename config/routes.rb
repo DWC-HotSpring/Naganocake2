@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :edit, :show, :update, :new, :create]
     resources :genres, only: [:index, :edit, :update, :create]
     resources :orders, only: [:index, :show, :update]
+    resources :order_products, only: [:update]
   end
   devise_for :admins
   
