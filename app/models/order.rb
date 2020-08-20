@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  
+  scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+  
   enum order_status: {
     入金待ち: 0,
     入金確認: 1,
