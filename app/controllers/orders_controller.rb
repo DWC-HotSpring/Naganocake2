@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_customer
 
   def index
-    @orders = @customer.orders
+    @orders = @customer.orders.order(id: "DESC")
   end
   
   def show
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
       @order.customer_id = current_customer.id
       @order.save
       
-      # 住所モデル検索から該当データなければ新規作成は必須でない為コメントアウト
+      # 住所モデル検索から該当データなければ新規作成の機能は必須でない為一旦コメントアウト
       # @address = Address.new
       # @address.post_code = @order.post_code
       # @address.prefecture_code = @order.prefecture_code
