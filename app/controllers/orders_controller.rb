@@ -3,9 +3,11 @@ class OrdersController < ApplicationController
   before_action :set_customer
 
   def index
+    @orders = @customer.orders.order(id: "DESC")
   end
   
   def show
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -14,7 +16,6 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.postage = 800
     @order.payment_method = params[:order][:payment_method]
 
     @add = params[:order][:add].to_i
@@ -49,7 +50,7 @@ class OrdersController < ApplicationController
       @order.customer_id = current_customer.id
       @order.save
       
-      # 住所モデル検索から該当データなければ新規作成は必須でない為コメントアウト
+      # 住所モデル検索から該当データなければ新規作成の機能は必須でない為一旦コメントアウト
       # @address = Address.new
       # @address.post_code = @order.post_code
       # @address.prefecture_code = @order.prefecture_code
@@ -61,13 +62,13 @@ class OrdersController < ApplicationController
       
       # cart_itemsの内容をorder_productsに新規登録
       current_customer.cart_items.each do |cart_item|
-        @order_product = OrderProduct.new
+        @order_product = @order.order_products.new
         @order_product.order_id = @order.id
         @order_product.product_id = cart_item.product_id
         @order_product.quantity = cart_item.quantity
         @order_product.purchase_price = cart_item.product.price
         @order_product.save
-        @customer.cart_items.destroy_all #order_productに情報を移したらcart_itemは消去
+        @customer.cart_items.destroy #order_productに情報を移したらcart_itemは消去
       end
       render :thanks
     else

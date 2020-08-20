@@ -3,8 +3,7 @@ class Admins::OrdersController < ApplicationController
   before_action :set_admin
   
   def index
-    @orders = Order.all.order(id: :desc)
-    @orders = Order.page(params[:page]).per(2)
+    @orders = Order.all.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def show
@@ -13,8 +12,11 @@ class Admins::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admins_order_path(@order)
+    if @order.update(order_params)
+    redirect_to admins_order_path(@order), notice: "注文ステータスが変更されました"
+    else
+      rendr :show
+    end
   end
 
   private

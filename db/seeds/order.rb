@@ -10,6 +10,7 @@ Order.create!(
       city:  '篠山市瀬利',
       block: '1-3-1',
       payment_method: 0,
+      postage: 800,
     }
   ]
 )
