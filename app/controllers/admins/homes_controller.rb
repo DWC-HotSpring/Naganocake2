@@ -3,6 +3,7 @@ class Admins::HomesController < ApplicationController
   before_action :set_admin
 
   def top
+    @orders = Order.created_today
   end
 
   private
