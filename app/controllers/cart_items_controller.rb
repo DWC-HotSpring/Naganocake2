@@ -17,7 +17,8 @@ class CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @current_item.quantity += params[:quantity].to_i
-      @current_item.update(cart_item_params)
+      new_quantity = @cart_item.quantity + @current_item.quantity
+      @current_item.update(quantity: new_quantity)
       redirect_to cart_items_path
     end
   end
