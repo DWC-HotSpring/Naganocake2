@@ -1,0 +1,28 @@
+        ja:
+  activerecord:
+        order: 注文情報
+      attributes:
+        order:
+          customer_id: 会員id
+          order_status: 注文情報
+          addressee: 配送先
+          post_code: 郵便番号
+          prefecture_code: 都道府県コード
+          city: 市区町村
+          block: 番地
+          postage: 送料
+          billing_amount: 請求金額
+          payment_method: 支払方法
+    enums:
+      order:
+        order_status:
+              waiting: 入金待ち
+              confirmation: 入金確認
+              making: 製作中
+              ready: 発送準備中
+              shipped: 発送済み
+     enums:
+      order:
+        payment_method:
+      credit: クレジットカード
+        cash: 銀行振り込み
