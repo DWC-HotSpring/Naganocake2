@@ -9,10 +9,8 @@ Rails.application.routes.draw do
   devise_for :admins
   
   #顧客用サイトのルーティング
-  devise_for :customers
-
-  resources :products, only: [:index, :show]
-
+  devise_for :customers, :except => :edit
+  resource :customers, only: [:show]
 
   resources :orders, only: [:new, :index, :create, :show]
     get 'orders/confirm' => 'orders#confirm'

@@ -1,0 +1,59 @@
+<h2>登録情報編集</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "customers/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :名前 %>
+    <%= f.label :（姓） %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "email" %>
+    <%= f.label :（名） %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :フリガナ %>
+    <%= f.label :（セイ） %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "email" %>
+    <%= f.label :（メイ） %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号（ハイフンなし） %>
+    <%= f.number_field :post_code, autofocus: true, autocomplete: "post_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所（都道府県） %>
+    <%= f.text_field :prefecture_code, autofocus: true, autocomplete: "number_field" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所（市区町村） %>
+    <%= f.text_field :city, autofocus: true, autocomplete: "prefecture_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所（番地） %>
+    <%= f.text_field :block, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号（ハイフンなし） %>
+    <%= f.number_field :phone_number, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "編集内容を保存する",class:"btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>
+
+<%= link_to "Back", :back %>
