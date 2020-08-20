@@ -8,18 +8,13 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = @customer.cart_items.build(cart_item_params)
-    @current_item = CartItem.find_by(product_id: @cart_item.product_id,customer_id: @cart_item.customer_id)
+    @cart_item = @customer.cart_items.new(cart_item_params)
+    @current_item = CartItem.find_by(product_id: @cart_item.product_id, customer_id: @cart_item.customer_id)
     # カートに同じ商品がなければ新規追加、あれば既存のデータと合算
     if @current_item.nil?
-      if @cart_item.save
-        flash[:success] = 'カートに商品が追加されました！'
-        redirect_to cart_items_path
-      else
-        @carts_items = @customer.cart_items.all
-        render 'index'
-        flash[:danger] = 'カートに商品を追加できませんでした。'
-      end
+      @cart_item.save
+      flash[:success] = 'カートに商品が追加されました。'
+      redirect_to cart_items_path
     else
       @current_item.quantity += params[:quantity].to_i
       @current_item.update(cart_item_params)
