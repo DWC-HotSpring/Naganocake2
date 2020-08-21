@@ -24,5 +24,21 @@ Product.create!(
       is_active: true,
       description: '中辛のカレーを、甘いパン生地と合わせました。'
     },
+    {
+      id: 4,
+      name: 'いちごのショートケーキ',
+      price: 300,
+      genre_id: 4,
+      is_active: true,
+      description: '国産いちごをふんだんに使ったショートケーキです。'
+    },
+    {
+      id: 5,
+      name: 'シュークリーム',
+      price: 360,
+      genre_id: 3,
+      is_active: true,
+      description: '圧倒的なクリームの密度・柔らかさを堪能してみてください。'
+    },
   ]
 )
