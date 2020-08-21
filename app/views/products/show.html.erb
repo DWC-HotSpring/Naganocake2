@@ -7,6 +7,9 @@
       <div class="">
         <div>
           <h3><%= @product.name %></h3>
+          <% if @product.recent_created? %>
+            <span class="badge badge-warning">New</span>
+          <% end %>
         </div>
         <div>
           <p><%= @product.description %></p>
