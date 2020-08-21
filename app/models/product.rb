@@ -7,8 +7,8 @@ class Product < ApplicationRecord
     has_many :products, through: :order_products
     attachment :image
 
-    #一週間以内に登録されたか判定
-    def recent_created?
+    #一週間以内に登録されたか判定するメソッド
+    def new_arrival?
       now = Date.today
       self.created_at.between?(1.week.ago, now)
     end

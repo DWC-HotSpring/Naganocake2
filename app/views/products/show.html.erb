@@ -6,10 +6,12 @@
     <div class="col-sm-6 align-self-center">
       <div class="">
         <div>
-          <h3><%= @product.name %></h3>
-          <% if @product.recent_created? %>
-            <span class="badge badge-warning">New</span>
-          <% end %>
+          <h3>
+            <%= @product.name %>
+            <% if @product.new_arrival? %>
+              <span class="badge badge-warning">New</span>
+            <% end %>
+          </h3>
         </div>
         <div>
           <p><%= @product.description %></p>
