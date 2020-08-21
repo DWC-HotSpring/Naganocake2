@@ -12,5 +12,9 @@ Genre.create!(
       id: 3,
       name: '菓子パン'
     },
+    {
+      id: 4,
+      name: 'ケーキ'
+    },
   ]
 )

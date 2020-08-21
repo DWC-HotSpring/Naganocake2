@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_customer
+  include ApplicationHelper
 
   def index
     @orders = @customer.orders.order(id: "DESC")
