@@ -5,7 +5,8 @@
         <%= render 'shared/error_messages', model: f.object %>
         <div class="row">
             <div class ="col-xs-4 col-xs-offset-1">
-                <%= f.attachment_field :image %>
+                <%= attachment_image_tag @product, :image, class: "image", fallback: "no_img.png", size:"300x300" %>
+                <%= f.attachment_field :image, placeholder: "画像", id: "item_image" %>
             </div>
             <div class ="col-xs-4">
              <table class="table">
@@ -40,3 +41,17 @@
         <% end %>
     </div>
 </div>
+
+
+<!-- 画像プレビュー -->
+<script>
+$(function(){
+    $('#item_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+}  
+reader.readAsDataURL(e.target.files[0]);    
+});
+});
+</script>
