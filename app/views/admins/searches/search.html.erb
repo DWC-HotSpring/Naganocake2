@@ -1,0 +1,54 @@
+<div class ="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <% if @model == "customer" %>
+                <h2>Customers</h2>
+                    <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @datas.each do |customer| %>
+                            <tr>
+                            <td><%= customer.id %></td>
+                            <td><%= link_to customer.full_name,admins_customer_path(customer.id) %></td>
+                            <td><%= customer.email %></td>
+                            </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+            <% else %>
+                <h2>Products</h2>
+                    <table class ="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Opinion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @datas.each do |product| %>
+                            <tr>
+                            <td><%= product.id %></td>
+                            <td><%= link_to product.name,admins_product_path(product.id) %></td>
+                            <td><%= product.price %></td>
+                            <td><%= product.genre.name %></td>
+                            <td>
+                            <% if product.is_active == true %>
+                                <%= "販売中" %>
+                            <% else %>
+                                <%= "売り切れ" %>
+                            <% end %>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+            <% end %>
+        </div>
+    </div>
+</div>

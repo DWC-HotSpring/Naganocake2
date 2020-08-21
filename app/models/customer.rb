@@ -27,12 +27,7 @@ class Customer < ApplicationRecord
   def full_name
     self.first_name + self.last_name
   end
-
-  def full_adress
-    self.prefecture_name + self.city + self.block
-  end
-  
-  
+    
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換
   include JpPrefecture
   jp_prefecture :prefecture_code
