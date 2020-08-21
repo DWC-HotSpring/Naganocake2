@@ -5,38 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  
+    <%= render 'shared/header' %>
+
   <!-- サクセスメッセージ -->
       <% if flash[:notice] %>
         <div class="flash">
           <%= flash[:notice] %>
         </div>
       <% end %>
-  <!-- ヘッダーのコメントアウト -->
-  <% if false %>
-  # <header>
-  #     <p>logo</p>
-  #       <% if user_signed_in? %>
-  #         <ul class="nav navbar-nav navbar-right">
-  #           <li><%= link_to "マイページ",customers_registrations_path %></li>
-  #           <li><%= link_to "商品一覧",products_path %></li>
-  #           <li><%= link_to "カート",cart_items_path %></li>
-  #           <li><%= link_to "ログアウト",destroy_admin_session_path %></li>
-  #         </ul>
-  #       <% else %>
-  #         <ul class="nav navbar-nav navbar-right">
-  #           <li><%= link_to "About",class:'glyphicon glyphicon-link about' %></li>
-  #           <li><%= link_to "商品一覧",products_path %></li>
-  #           <li><%= link_to "新規登録",new_admin_session_path %></li>
-  #           <li><%= link_to "ログイン",admin_session %></li>
-  #         </ul>
-  #       <% end %>
-  #   </header>
-  <% end %>
+  
     <%= yield %>
+
   </body>
 </html>

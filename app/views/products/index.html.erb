@@ -1,22 +1,2 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
-
-<div class="contaier">
-  <h4>今売れている商品</h4>
-  <div class="row">
-    <div class="col-sm-4">1位</div>
-    <div class="col-sm-4">2位</div>
-    <div class="col-sm-4">3位</div>
-  </div>
-  <div class="row">
-    <% @rank_items.each do |rank_item| %>
-    <div class="col-sm-4">
-      <%= link_to product_path(rank_item.product) do%>
-        <%= attachment_image_tag rank_item.product, :image, size: '200x200',format: "jpeg",fallback: "no_img.png" %>
-        <p><%= rank_item.product.name %></p>
-      <% end %>
-      <p><%= rank_item.product.price %>円</p>
-    </div>
-    <% end %>
-  </div>
-</div>

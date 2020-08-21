@@ -26,7 +26,7 @@
                 <%= attachment_image_tag(cart_item.product, :image, fallback: "no_img.png", size: "50x50") %>
                 <%= cart_item.product.name %>
               <% end %>
-            <td>
+            </td>
             <td>
               <%= price_with_tax(cart_item.product.price) %>
             </td>
