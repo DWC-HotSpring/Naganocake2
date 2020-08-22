@@ -6,8 +6,13 @@
     <div class="col-sm-6 align-self-center">
       <div class="">
         <div>
-          <h3><%= @product.name %></h3>
-          <!-- favorite -->
+          <h3>
+            <%= @product.name %>
+            <% if @product.new_arrival? %>
+              <span class="badge badge-warning">New</span>
+            <% end %>
+          </h3>
+          <!-- favorite button -->
           <div id="favorites_buttons_<%= @product.id %>">
             <%= render partial: 'favorites/favorite_button', locals: { product: @product} %>
           </div>
