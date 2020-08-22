@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   get 'homes/top' => 'homes#top', as: 'customer_top'
   get 'homes/about' => 'homes#about', as: 'customer_about'
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :orders, only: [:new, :index, :create, :show]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
