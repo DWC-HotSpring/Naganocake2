@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_091931) do
   create_table "order_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "order_id"
-    t.integer "make_status"
+    t.integer "make_status", default: 0
     t.integer "quantity"
     t.integer "purchase_price"
     t.datetime "created_at", null: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_091931) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.string "addressee"
     t.string "post_code"
     t.integer "prefecture_code"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_091931) do
     t.string "name"
     t.integer "price"
     t.integer "genre_id"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.string "image_id"
     t.text "description"
     t.datetime "created_at", null: false
