@@ -13,3 +13,9 @@ require './db/seeds/product.rb'
 require './db/seeds/order.rb'
 require './db/seeds/order_product.rb'
 require './db/seeds/cart_item.rb'
+
+Admin.create!(
+        id: 1,
+        email: "admin@admin",
+        password: "qazwsx"
+)

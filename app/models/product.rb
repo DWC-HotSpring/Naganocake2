@@ -25,7 +25,7 @@ class Product < ApplicationRecord
         validates :name
         validates :price
         validates :genre_id
-        validates :image
+        #validates :image
         validates :description
       end
 
