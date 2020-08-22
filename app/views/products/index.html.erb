@@ -1,2 +1,41 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="row justify-content-center">
+
+  <div class="col-2">
+    <!-- ジャンル一覧 -->
+    <div class="card" style="width: 20rem;">
+      <div class="card-header">
+        ジャンル検索
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ケーキ</li>
+        <li class="list-group-item">タルト</li>
+        <li class="list-group-item">パイ</li>
+        <li class="list-group-item">タルト</li>
+        <li class="list-group-item">ワッフル</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h2>
+      <span>商品一覧</span>
+      <span>（全<%= @products.count %>件）</span>
+    </h2>
+    <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-3">
+        <%= link_to product_path(product) do %>
+          <div class="">
+            <% if product.new_arrival? %>
+              <span class="badge badge-warning notify-badge">New</span>
+            <% end %>
+            <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: 'no_img.png', class: "card-img-top"  %>
+            <h4><%= product.name %></h4>
+          </div>
+        <% end %>
+        <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= paginate @products %>

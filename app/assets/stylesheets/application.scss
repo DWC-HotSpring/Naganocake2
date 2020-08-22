@@ -79,3 +79,17 @@ header {
  .searchform{
    float: right;
  }
+
+ .notify-badge{
+  position: absolute;
+  background-color: red;
+  height: 3rem;
+  top: 2rem;
+  right: 1.5rem;
+  width: 6rem;
+  text-align: center;
+  line-height: 2rem;;
+  font-size: 2rem;
+  border-radius: 50%;
+  color:white;
+}
