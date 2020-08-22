@@ -1,7 +1,6 @@
 <h1>商品新規登録</h1>
 <div class="container">
-    <div class="row">
-        <%= form_with model:[:admins,@product] do |f| %>
+    <%= form_with model:[:admins,@product] do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
         <div class="row">
             <div class ="col-xs-4 col-xs-offset-1">
@@ -33,13 +32,13 @@
             </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-2 col-xs-offset-10">
-                <%= f.submit "新規登録", class: "btn btn-primary" %>
-            </div>
+
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-10">
+            <%= f.submit "新規登録", class: "btn btn-primary" %>
         </div>
-        <% end %>
     </div>
+    <% end %>
 </div>
 
 <!-- 画像プレビュー -->

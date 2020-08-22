@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :update, :create]
     resources :orders, only: [:index, :show, :update]
     resources :order_products, only: [:update]
+    get "search" => "searches#search"
   end
   devise_for :admins
 
