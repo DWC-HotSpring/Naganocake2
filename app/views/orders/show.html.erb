@@ -32,12 +32,14 @@
   <div class="row">
     <h3>注文内容</h3>
     <table class="table table-bordered">
-      <tr>
-        <th>商品</th>
-        <th>単価（税込み）</th>
-        <th>個数</th>
-        <th>小計</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価（税込み）</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
       <% sum_all = 0 %>
       <% @order.order_products.each do |order_product| %>
       <tr>
