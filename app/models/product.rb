@@ -6,6 +6,11 @@ class Product < ApplicationRecord
     has_many :order_products
     has_many :products, through: :order_products
     attachment :image
+    has_many :favorites, dependent: :destroy
+
+    def favorited_by?(customer)
+      favorites.where(customer_id: customer.id).exists?
+    end
 
     #一週間以内に登録されたか判定するメソッド
     def new_arrival?

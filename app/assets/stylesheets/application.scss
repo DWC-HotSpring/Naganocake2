@@ -16,3 +16,25 @@
 
  @import "bootstrap-sprockets";
  @import 'bootstrap';
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #c9e9e6;
+}
+
+ #top-img {
+   background-image: url('top-img.jpeg');
+   background-repeat: no-repeat;
+   background-position: right 15% bottom 65%;
+   background-size: 100% auto;
+   margin-top: -20px;
+   color: white;
+   height: 430px;
+ }
+
