@@ -92,13 +92,13 @@ ActiveRecord::Schema.define(version: 2020_08_21_091931) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "order_status", default: 0
+    t.integer "order_status"
     t.string "addressee"
     t.string "post_code"
     t.integer "prefecture_code"
     t.string "city"
     t.string "block"
-    t.integer "postage", default: 800
+    t.integer "postage"
     t.integer "billing_amount"
     t.integer "payment_method"
     t.datetime "created_at", null: false
