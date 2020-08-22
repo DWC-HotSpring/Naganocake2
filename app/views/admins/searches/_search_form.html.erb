@@ -1,10 +1,7 @@
-<%= form_with url: admins_search_path, scope: :searchs, method: :get do |f| %>
-    <%= f.text_field :content %>
+<%= form_with url: admins_search_path, class:"form-inline my-2 my-lg-0",local: true , method: :get do |f| %>
+    <%= f.text_field :content ,class:"form-control mr-sm-2" %>
     <%= f.select :model,
         {"顧客": "customer", "商品": "product"},
         {include_blank: "選択してください"},{ class: 'form-control',required: true} %>
-    <%= f.select :how,
-        {"完全一致": "match", "前方一致": "forward", "後方一致": "backward", "部分一致": "partical" },
-        {include_blank: "選択してください"},{ class: 'form-control',required: true}  %>
-    <%= f.submit 'Search' %>
+    <%= f.submit '検索', class:"btn btn-outline-success my-2 my-sm-0" %>
 <% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'homes/about'
+  get 'homes/top'
   namespace :admins do
     get '/top' => "homes#top"
     resources :customers, only: [:index, :edit, :show, :update]
@@ -9,13 +11,16 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
   end
   devise_for :admins
+
+  # rootパス
+  root 'homes#top'
   
   #顧客用サイトのルーティング
   devise_for :customers
 
+  get 'homes/top' => 'homes#top', as: 'customer_top'
+  get 'homes/about' => 'homes#about', as: 'customer_about'
   resources :products, only: [:index, :show]
-
-
   resources :orders, only: [:new, :index, :create, :show]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'

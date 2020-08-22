@@ -6,9 +6,9 @@
                     <table class = "table">
                     <thead>
                         <tr>
-                            <th>image</th>
-                            <th>name</th>
-                            <th></th>
+                            <th>ID</th>
+                            <th>氏名</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -17,7 +17,6 @@
                             <td><%= customer.id %></td>
                             <td><%= link_to customer.full_name,admins_customer_path(customer.id) %></td>
                             <td><%= customer.email %></td>
-                            </td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -26,9 +25,11 @@
                     <table class ="table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Opinion</th>
+                                <th>ID</th>
+                                <th>商品名</th>
+                                <th>価格</th>
+                                <th>ジャンル</th>
+                                <th>販売ステータス</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,7 @@
                             <% else %>
                                 <%= "売り切れ" %>
                             <% end %>
+                            </td>
                             </tr>
                             <% end %>
                         </tbody>
