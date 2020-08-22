@@ -1,2 +1,44 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class="body">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-xs-8">
+          <h2>マイページ</h2>
+            <h4>登録情報</h4>
+            <%= link_to "編集する", edit_customer_registration_path, class: "btn btn-primary btn-lg" %>
+            <%= link_to "パスワードを変更する", edit_customer_password_path,  class: "btn btn-primary btn-lg" %>
+
+              <table class="table table-hover table-bordered">
+                <tbody>
+                  <tr>
+                    <td>氏名</td>
+                    <td colspan="2"><%= @customer.first_name %><%= @customer.last_name %></td>
+                  </tr>
+                  <tr>
+                    <td>カナ</td>
+                    <td colspan="2"><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
+                  </tr>
+                  <tr>
+                    <td>郵便番号</td>
+                    <td><%= @customer.post_code %></td>
+                  </tr>
+                  <tr>
+                    <td>住所</td>
+                    <td><%= @customer.prefecture_code.to_s %><%= @customer.city %><%= @customer.block %></td>
+                  </tr>
+                  <tr>
+                    <td>電話番号</td>
+                    <td><%= @customer.phone_number %></td>
+                  </tr>
+                  <tr>
+                    <td>メールアドレス</td>
+                    <td><%= @customer.email %></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <h4>配送先</h4>
+            <%= link_to "一覧を見る", order_products_path, class: "btn btn-primary btn-lg" %>
+            <h4>注文履歴</h4>
+            <%= link_to "一覧を見る", orders_path, class: "btn btn-primary btn-lg" %>
+        </div>
