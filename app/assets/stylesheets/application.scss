@@ -16,6 +16,8 @@
 
  @import "bootstrap-sprockets";
  @import 'bootstrap';
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
 
  * {
   margin: 0;
@@ -35,3 +37,4 @@ header {
    color: white;
    height: 430px;
  }
+
