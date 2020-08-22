@@ -26,6 +26,9 @@
       <div class="col-3">
         <%= link_to product_path(product) do %>
           <div class="">
+            <% if product.new_arrival? %>
+              <span class="badge badge-warning notify-badge">New</span>
+            <% end %>
             <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: 'no_img.png', class: "card-img-top"  %>
             <h4><%= product.name %></h4>
           </div>
