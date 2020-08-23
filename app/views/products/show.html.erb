@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
+<div class="">
+  <div class="row justify-content-center">
+    <div class="col-lg-2">
+      <%= render 'shared/genre_search', genres: @genres %>
+    </div>
+    <div class="col-lg-3">
       <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "450x350" %>
     </div>
-    <div class="col-sm-6 align-self-center">
-      <div class="">
+    
+    <div class="col-lg-3 align-self-center">
         <div>
           <h3>
             <%= @product.name %>
@@ -24,8 +27,6 @@
           <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込） + 送料¥800</p>
         </div>
 
-      </div>
-
       <%= form_with(model: [@product,@cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
         <%= f.label :数量 %>
         <%= f.number_field :quantity, value: 1 , min:1, max:99 %>個
@@ -43,8 +44,9 @@
       </div>
 
       <%= link_to '戻る', :back, class: 'btn btn-primary' %>
+    </div>
+
 
     </div>
   </div>
-
 </div>

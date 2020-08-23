@@ -1,24 +1,17 @@
 <div class="row justify-content-center">
 
-  <div class="col-2">
-    <!-- ジャンル一覧 -->
-    <div class="card" style="width: 20rem;">
-      <div class="card-header">
-        ジャンル検索
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">ケーキ</li>
-        <li class="list-group-item">タルト</li>
-        <li class="list-group-item">パイ</li>
-        <li class="list-group-item">タルト</li>
-        <li class="list-group-item">ワッフル</li>
-      </ul>
-    </div>
-  </div>
+  <%= render 'shared/genre_search', genres: @genres %>
 
   <div class="col-8">
     <h2>
-      <span>商品一覧</span>
+      <span>
+      <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
+      <% if @genre %> 
+        <%= @genre.name %>一覧
+        <% else %>
+        商品一覧
+      <% end %>
+      </span>
       <span>（全<%= @products.count %>件）</span>
     </h2>
     <div class="row">

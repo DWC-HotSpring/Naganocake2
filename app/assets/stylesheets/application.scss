@@ -23,11 +23,21 @@
   margin: 0;
   padding: 0;
 }
-
-header {
+/* ヘッダー */ 
+ header {
   background-color: #c9e9e6;
 }
 
+ .submit{
+  border-style: none;
+  background-color: #c9e9e6;
+ }
+
+ .searchform{
+   float: right;
+ }
+
+/* メインビジュアル */ 
  #top-img {
    background-image: url('top-img.jpeg');
    background-repeat: no-repeat;
@@ -37,6 +47,41 @@ header {
    color: white;
    height: 430px;
  }
+
+
+ /* 商品 */ 
+ #about-img {
+  background-image: url('bakery.jpeg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+ }
+
+ #about-img:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+.about-contents {
+  margin-top: 300px;
+  text-shadow:0 0 10px #000;
+}
 
  .submit{
   border-style: none;
