@@ -21,17 +21,28 @@
           <p><%= @product.description %></p>
         </div>
         <div>
-          <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込）</p>
+          <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込） + 送料¥800</p>
         </div>
-
 
       </div>
 
       <%= form_with(model: [@product,@cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
-        <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {include_blank: "個数選択"} %>個
+        <%= f.label :数量 %>
+        <%= f.number_field :quantity, value: 1 , min:1, max:99 %>個
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class="fas fa-shopping-cart btn btn-warning"> カートに入れる</i>
+        <% end %>
       <% end %>
+
+      <div>
+        <p><br>
+          ※一つ一つ手作りの為、写真と若干の色合いやデザイン等異なる場合がございます。<br>
+          ご了承の上お買い求めくださいませ。
+        </p>
+      </div>
+
+      <%= link_to '戻る', :back, class: 'btn btn-primary' %>
 
     </div>
   </div>
