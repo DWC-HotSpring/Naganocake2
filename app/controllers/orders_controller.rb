@@ -51,15 +51,17 @@ class OrdersController < ApplicationController
       @order.customer_id = current_customer.id
       @order.save
       
-      # 住所モデル検索から該当データなければ新規作成の機能は必須でない為一旦コメントアウト
-      # @address = Address.new
-      # @address.post_code = @order.post_code
-      # @address.prefecture_code = @order.prefecture_code
-      # @address.city = @order.city
-      # @address.block = @order.block
-      # @address.name = @order.addressee
-      # @address.customer_id = current_customer.id
-      # @address.save
+      # Addressテーブルに、該当データがなければ新規作成
+      if Address.find_by(prefecture_code: @order.prefecture_code, city: @order.city, block: @order.block, name: @order.addressee).nil?
+        @address = Address.new
+        @address.post_code = @order.post_code
+        @address.prefecture_code = @order.prefecture_code
+        @address.city = @order.city
+        @address.block = @order.block
+        @address.name = @order.addressee
+        @address.customer_id = current_customer.id
+        @address.save
+      end
       
       # cart_itemsの内容をorder_productsに新規登録
       current_customer.cart_items.each do |cart_item|
@@ -73,9 +75,8 @@ class OrdersController < ApplicationController
       end
       render :thanks
     else
-      # redirect_to root_path # rootパス設定後追加
-      redirect_to products_path
-      flash[:danger] = 'カートが空です。'
+      redirect_to root_path
+      flash[:notice] = 'カートが空です。'
     end
   end
 

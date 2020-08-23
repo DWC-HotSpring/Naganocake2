@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
     # カートに同じ商品がなければ新規追加、あれば既存のデータと合算
     if @current_item.nil?
       @cart_item.save
-      flash[:success] = 'カートに商品が追加されました。'
+      flash[:notice] = 'カートに商品が追加されました。'
       redirect_to cart_items_path
     else
       @current_item.quantity += params[:quantity].to_i
@@ -25,20 +25,20 @@ class CartItemsController < ApplicationController
 
   def update
     if @cart_item.update(cart_item_params)
-      flash[:success] = 'カート内の商品を更新しました。'
+      flash[:notice] = 'カート内の商品を更新しました。'
       redirect_to cart_items_path
     end
   end
 
   def destroy
     @cart_item.destroy
-    flash[:info] = 'カートの商品を取り消しました。'
+    flash[:notice] = 'カートの商品を取り消しました。'
     redirect_to cart_items_path
   end
 
   def destroy_all
     @customer.cart_items.destroy_all
-    flash[:info] = 'カートを空にしました。'
+    flash[:notice] = 'カートを空にしました。'
     redirect_to cart_items_path
   end
 
