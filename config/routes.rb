@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about', as: 'customer_about'
   resources :customers, only: [:show]
   resources :products, only: [:index, :show] do
+    collection do
+      #ジャンル検索用に追加
+      post 'search'
+    end
     resource :favorites, only: [:create, :destroy]
   end
   resources :orders, only: [:new, :index, :create, :show]

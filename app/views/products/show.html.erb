@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+  <%= render 'shared/genre_search', genres: @genres %>
+    <div class="col-sm-5">
       <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "450x350" %>
     </div>
-    <div class="col-sm-6 align-self-center">
-      <div class="">
+    
+    <div class="col-sm-5 align-self-center">
         <div>
           <h3>
             <%= @product.name %>
@@ -23,9 +24,6 @@
         <div>
           <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込）</p>
         </div>
-
-
-      </div>
 
       <%= form_with(model: [@product,@cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
         <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {include_blank: "個数選択"} %>個
