@@ -13,6 +13,12 @@ class AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
+		if @address.customer.id != current_customer.id
+			redirect_to address_path
+		else
+			render "edit"
+		end
   end
 
   def show
