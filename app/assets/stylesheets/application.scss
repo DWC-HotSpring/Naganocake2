@@ -23,11 +23,21 @@
   margin: 0;
   padding: 0;
 }
-
-header {
+/* ヘッダー */ 
+ header {
   background-color: #c9e9e6;
 }
 
+ .submit{
+  border-style: none;
+  background-color: #c9e9e6;
+ }
+
+ .searchform{
+   float: right;
+ }
+
+/* メインビジュアル */ 
  #top-img {
    background-image: url('top-img.jpeg');
    background-repeat: no-repeat;
@@ -38,6 +48,8 @@ header {
    height: 430px;
  }
 
+
+ /* 商品 */ 
  #about-img {
   background-image: url('bakery.jpeg');
   background-repeat: no-repeat;

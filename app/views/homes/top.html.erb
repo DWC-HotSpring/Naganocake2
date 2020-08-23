@@ -1,5 +1,4 @@
 <div class="contaier">
-
   <!-- サイト紹介画像 -->
   <div class="jumbotron" id="top-img">
     <div class="container">
@@ -12,26 +11,10 @@
       <p><%= link_to 'Sign in >>', new_customer_session_path , class: "btn btn-primary btn-lg" %></p>
     </div>
   </div>
-
   <div class="row justify-content-center">
-
-    <div class="col-2">
-      <!-- ジャンル一覧 -->
-      <div class="card" style="width: 20rem;">
-        <div class="card-header">
-          ジャンル検索
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ケーキ</li>
-          <li class="list-group-item">タルト</li>
-          <li class="list-group-item">パイ</li>
-          <li class="list-group-item">タルト</li>
-          <li class="list-group-item">ワッフル</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-8">
+  <!-- ジャンル一覧 -->
+  <%= render 'shared/genre_search', genres: @genres %>
+    <div class="col-9">
       <!-- ランキング表示 -->
       <h4>今売れている商品</h4>
       <div class="row justify-content-between">
@@ -50,8 +33,5 @@
       </div>
       <div class="text-right"><p><%= link_to '商品一覧へ>>', products_path %></p></div>
     </div>
-
-    
   </div>
-
 </div>
