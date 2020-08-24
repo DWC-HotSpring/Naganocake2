@@ -6,7 +6,7 @@
           <h3 class="heading">マイページ</h3>
 
             <h4 class="col-xs-8">登録情報
-              <%= link_to "編集する", edit_customer_registration_path, class: "btn btn-primary btn-lg" %>
+              <%= link_to "編集する", edit_customer_path, class: "btn btn-primary btn-lg" %>
               <%= link_to "パスワードを変更する", edit_customer_password_path,  class: "btn btn-primary btn-lg" %>
             </h4>
 
@@ -14,11 +14,11 @@
                 <tbody>
                   <tr>
                     <td>氏名</td>
-                    <td colspan="2"><%= @customer.first_name %><%= @customer.last_name %></td>
+                    <td colspan="2"><%= @customer.last_name %><%= @customer.first_name %></td>
                   </tr>
                   <tr>
                     <td>カナ</td>
-                    <td colspan="2"><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
+                    <td colspan="2"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
                   </tr>
                   <tr>
                     <td>郵便番号</td>

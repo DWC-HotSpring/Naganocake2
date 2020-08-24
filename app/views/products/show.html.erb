@@ -3,22 +3,22 @@
     <div class="col-lg-2">
       <%= render 'shared/genre_search', genres: @genres %>
     </div>
-    <div class="col-lg-3">
-      <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "450x350" %>
+    <div class="col-lg-4">
+      <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "350x350" %>
     </div>
     
-    <div class="col-lg-3 align-self-center">
+    <div class="col-lg-4 align-self-center">
         <div>
           <h3>
             <%= @product.name %>
             <% if @product.new_arrival? %>
               <span class="badge badge-warning">New</span>
             <% end %>
+            <!-- favorite button -->
+            <span id="favorites_buttons_<%= @product.id %>">
+              <%= render partial: 'favorites/favorite_button', locals: { product: @product} %>
+            </span>
           </h3>
-          <!-- favorite button -->
-          <div id="favorites_buttons_<%= @product.id %>">
-            <%= render partial: 'favorites/favorite_button', locals: { product: @product} %>
-          </div>
         </div>
         <div>
           <p><%= @product.description %></p>
@@ -45,16 +45,18 @@
 
       <%= link_to '戻る', :back, class: 'btn btn-primary' %>
     </div>
-    </div>
   </div>
-      <div class = "row">
-        <div class="col-lg-4 col-xs-offset-1">
-          <%= render 'posts/post_form', {post: @post, product:@product} %>
-        </div>
-      <div class="col-lg-5">
-        <div id="product_posts_<%= @product.id %>">
-          <%= render 'posts/post_content', product:@product %>
-        </div>
+
+    <br>
+
+    <div class = "row">
+      <div class="col-lg-4 col-xs-offset-1">
+        <%= render 'posts/post_form', {post: @post, product:@product} %>
+      </div>
+    <div class="col-lg-5">
+      <div id="product_posts_<%= @product.id %>">
+        <%= render 'posts/post_content', product:@product %>
+      </div>
     </div>
-</div>
+
 </div>

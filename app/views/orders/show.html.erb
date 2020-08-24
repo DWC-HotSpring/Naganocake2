@@ -1,10 +1,15 @@
 <div class="container">
   <div class="row">
-    <h2>注文履歴詳細</h2>
+    <div class="col-11">
+      <h3 class="heading">注文履歴詳細</h3>
+    </div>
+    <div class="col-1">
+      <%= link_to '戻る', :back, class: 'btn btn-primary' %>
+    </div>
   </div>
 
   <div class="row">
-    <h3>注文情報</h3>
+    <h4>注文情報</h4>
     <table class="table table-bordered">
       <tr>
         <th>注文日</th>
@@ -30,7 +35,7 @@
   </div>
 
   <div class="row">
-    <h3>注文内容</h3>
+    <h4>注文内容</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -66,10 +71,9 @@
       </tr>
       <tr>
         <th>ご請求額</th>
-        <td><%= sum_all + @order.postage.to_i %>円</td>
+        <td><%= @order.billing_amount %>円</td>
       </tr>
     </table>
   </div>
-
 
 </div>
