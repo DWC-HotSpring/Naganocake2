@@ -1,36 +1,38 @@
 class AddressesController < ApplicationController
-  before_action :authenticate_customer!
   
   def index
+    @address = Address.new
     @addresses = Address.all
   end
 
-  def new
-    @address = Address.new
-  end
-
   def create
+    @address = Address.new
   end
 
   def edit
     @address = Address.find(params[:id])
 		if @address.customer.id != current_customer.id
-			redirect_to address_path
-		else
-			render "edit"
+      redirect_to address_path
+      flash[:error] = "error"
 		end
   end
 
-  def show
-  end
-
   def update
-    @address = address.find(params[:id])
-  		@address.destroy
- 		redirect_to books address_path
+    @address = Address.find(params[:id])
+  	@address.update
+ 		redirect_to address_path
   end
 
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to address_path
   end
+
+  private
+
+	def address_params
+		params.require(:address).permit(:name, :post_code, :prefecture_code, :city, :block, :phone_number)
+	end
 
 end

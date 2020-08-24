@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'addresses/index'
   get 'homes/about'
   get 'homes/top'
   namespace :admins do
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
   get 'homes/top' => 'homes#top', as: 'customer_top'
   get 'homes/about' => 'homes#about', as: 'customer_about'
   resources :customers, only: [:show]
-  resources :addresses
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :products, only: [:index, :show] do
     collection do
       #ジャンル検索用に追加
