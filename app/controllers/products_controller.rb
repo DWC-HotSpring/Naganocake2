@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.includes(:genre).where(is_active: true).page(params[:page]).per(10)
+    @products = Product.includes(:genre).where(is_active: true).page(params[:page]).per(12)
     @genres = Genre.where(is_active: true)
   end
 
