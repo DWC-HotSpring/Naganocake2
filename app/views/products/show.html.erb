@@ -4,7 +4,7 @@
       <%= render 'shared/genre_search', genres: @genres %>
     </div>
     <div class="col-lg-4">
-      <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "350x350" %>
+      <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "350x350", class: "product-img" %>
     </div>
     
     <div class="col-lg-4 align-self-center">

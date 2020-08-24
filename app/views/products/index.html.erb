@@ -1,8 +1,12 @@
 <div class="row justify-content-center">
 
-  <%= render 'shared/genre_search', genres: @genres %>
+  <div class="col3">
+    <%= render 'shared/genre_search', genres: @genres %>
+  </div>
+
 
   <div class="col-8">
+
     <h2>
       <span>
       <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
@@ -14,21 +18,28 @@
       </span>
       <span>（全<%= @products.count %>件）</span>
     </h2>
+
     <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-3">
-        <%= link_to product_path(product) do %>
-          <div class="">
+      <% @products.each do |product| %>
+        <div class="col-2">
+          <%= link_to product_path(product) do %>
             <% if product.new_arrival? %>
               <span class="badge badge-warning notify-badge">New</span>
             <% end %>
-            <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: 'no_img.png', class: "card-img-top"  %>
-            <h4><%= product.name %></h4>
-          </div>
-        <% end %>
-        <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
-      </div>
-    <% end %>
+            <%= attachment_image_tag product, :image, size: "150x150", fallback: 'no_img.png', class: 'product-img' %>
+            <p><%= product.name %></p>
+          <% end %>
+          <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-6">
+    <%= paginate @products %>
   </div>
 </div>
-<%= paginate @products %>
