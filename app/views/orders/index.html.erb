@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2>注文履歴一覧</h2>
+    <h3 class="heading">注文履歴一覧</h3>
   </div>
 
   <table class="table table-bordered">
@@ -26,15 +26,12 @@
             <%= order.addressee %>
         </td>
         <td>
-          <% sum_all = 0 %>
           <% order.order_products.each do |order_product| %>
-          <%= order_product.product.name %><br>
-          <% sub_total = order_product.purchase_price.to_i * order_product.quantity %>
-          <% sum_all += sub_total.to_i %>
+            <%= order_product.product.name %><br>
           <% end %>
         </td>
         <td>
-          <%= sum_all += order.postage.to_i %>円
+          <%= order.billing_amount %>円
         </td>
         <td>
           <%= order.order_status %>

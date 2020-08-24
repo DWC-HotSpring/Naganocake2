@@ -93,13 +93,14 @@
     <%= f.hidden_field :block, :value => "#{@order.block}" %>
     <%= f.hidden_field :addressee, :value => "#{@order.addressee}" %>
     <%= f.hidden_field :payment_method, :value => "#{@order.payment_method}" %>
+    <%= f.hidden_field :billing_amount, :value => "#{billing_amount}" %>
 
     <div class="row">
       <div class="col-10">
-        <%= f.submit "購入を確定する", class: "btn btn-danger" %>
+        <%= link_to '入力情報修正', new_order_path, class:"btn btn-primary" %>
       </div>
       <div class="col-1">
-        <%= link_to '入力情報修正', new_order_path, class:"btn btn-primary" %>
+        <%= f.submit "購入を確定する", class: "btn btn-danger" %>
       </div>
     </div>
 

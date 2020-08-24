@@ -3,11 +3,11 @@
     <div class="col-lg-2">
       <%= render 'shared/genre_search', genres: @genres %>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
       <%= attachment_image_tag @product, :image, fallback: "no_img.png", size: "450x350" %>
     </div>
     
-    <div class="col-lg-3 align-self-center">
+    <div class="col-lg-4 align-self-center">
         <div>
           <h3>
             <%= @product.name %>
