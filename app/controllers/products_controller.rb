@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart = @product.cart_items.new
     @genres = Genre.where(is_active: true)
+    @post = Post.new
   end
 
   #ジャンル検索用

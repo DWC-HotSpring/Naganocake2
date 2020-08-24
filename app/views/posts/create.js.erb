@@ -1,0 +1,3 @@
+$('#product_posts_<%= @product.id %>').html("<%= j(render partial: 'posts/post_content', locals: {product: @product}) %>");
+$('#post_content').val('')
+$('#post_title').val('')

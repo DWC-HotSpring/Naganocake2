@@ -45,8 +45,16 @@
 
       <%= link_to '戻る', :back, class: 'btn btn-primary' %>
     </div>
-
-
     </div>
   </div>
+      <div class = "row">
+        <div class="col-lg-4 col-xs-offset-1">
+          <%= render 'posts/post_form', {post: @post, product:@product} %>
+        </div>
+      <div class="col-lg-5">
+        <div id="product_posts_<%= @product.id %>">
+          <%= render 'posts/post_content', product:@product %>
+        </div>
+    </div>
+</div>
 </div>

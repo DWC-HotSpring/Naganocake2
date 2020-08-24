@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_091931) do
+ActiveRecord::Schema.define(version: 2020_08_23_070540) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -103,6 +103,18 @@ ActiveRecord::Schema.define(version: 2020_08_21_091931) do
     t.integer "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.float "rate", default: 0.0, null: false
+    t.integer "customer_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_posts_on_customer_id"
+    t.index ["product_id"], name: "index_posts_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
