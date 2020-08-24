@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row">
 
-        <div class="col-xs-8">
+        <div class="col-xs-7">
           <h3 class="heading">マイページ</h3>
 
-            <h4 class="col-xs-8">登録情報
-              <%= link_to "編集する", edit_customer_path, class: "btn btn-primary btn-lg" %>
-              <%= link_to "パスワードを変更する", edit_customer_password_path,  class: "btn btn-primary btn-lg" %>
+            <h4 class="col-xs-7">登録情報
+              <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
+              <%= link_to "パスワードを変更する", edit_customer_password_path,  class: "btn btn-primary" %>
             </h4>
 
               <table class="table table-hover table-bordered">
@@ -39,14 +39,31 @@
                 </tbody>
               </table>
 
-            <h4 class="col-xs-8">配送先
+            <h4 class="col-xs-7">配送先
               <%= link_to "一覧を見る", order_products_path, class: "btn btn-primary btn-lg" %>
             </h4>
 
-            <h4 class="col-xs-8">注文履歴
+            <h4 class="col-xs-7">注文履歴
               <%= link_to "一覧を見る", orders_path, class: "btn btn-primary btn-lg" %>
             </h4>
 
+        </div>
+
+        <div class="col-3">
+          <div class="card favorite-card">
+            <div class="card-header">お気に入り商品</div>
+              <ul class="list-group list-group-flush">
+                  <% @favorite_products.each do |my_favorite|  %>
+                  <li class="list-group-item">
+                    <%= link_to product_path(my_favorite) do%>
+                      <%= attachment_image_tag(my_favorite, :image, fallback: "no_img.png", size: "70x70") %>
+                      <%= my_favorite.name %>
+                    <% end %>
+                    <br>
+                  </li>
+                  <% end %>
+              </ul>
+          </div>
         </div>
 
     </div>
