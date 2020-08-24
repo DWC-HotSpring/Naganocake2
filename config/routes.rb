@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       #ジャンル検索用に追加
       post 'search'
     end
+    resources :posts, only: [:create]
     resource :favorites, only: [:create, :destroy]
   end
   resources :orders, only: [:new, :index, :create, :show]
