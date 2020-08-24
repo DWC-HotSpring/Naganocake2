@@ -4,14 +4,15 @@
     <div class="row">
       <div class="col-lg-10">
         <table>
-          <%= form_with model:@address do |f| %>
+          <%= form_with model:@address, local: true do |f| %>
+            <%= render 'shared/error_messages', model: f.object %>
             <tr>
               <td>郵便番号</td>
               <td><%= f.text_field :post_code %></td>
             </tr>
             <tr>
               <td>住所（都道府県）</td>
-              <td><%= f.text_field :prefecture_code %></td>
+              <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %></td>
               <td>（市区町村）</td>
               <td><%= f.text_field :city %></td>
               <td>（番地）</td>
@@ -48,8 +49,8 @@
                     <td><%= address.prefecture_name %><%= address.city %><%= address.block %></td>
                     <td><%= address.name %></td>
                     <td>
-                      <%= link_to "編集する", edit_address_path(address), class:"btn btn-primary" %>
-                      <%= link_to "削除する", address_path(address), method: :delete, class:"btn btn-danger" %>
+                      <%= link_to "編集する", edit_address_path(address.id), class:"btn btn-primary" %>
+                      <%= link_to "削除する", address_path(address.id), method: :delete, class:"btn btn-danger" %>
                     </td>
                   </tr>
                 <% end %>
