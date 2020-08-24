@@ -1,4 +1,13 @@
 class Address < ApplicationRecord
+  with_options presence: true do
+  validates :post_code
+  validates :prefecture_code
+  validates :city
+  validates :block
+  validates :name
+  validates :phone_number 
+  end
+  
   belongs_to :customer
 
   
