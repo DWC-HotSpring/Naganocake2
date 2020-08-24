@@ -7,7 +7,8 @@ class Product < ApplicationRecord
     has_many :products, through: :order_products
     attachment :image
     has_many :favorites, dependent: :destroy
-
+    has_many :posts
+    
     def favorited_by?(customer)
       favorites.where(customer_id: customer.id).exists?
     end
