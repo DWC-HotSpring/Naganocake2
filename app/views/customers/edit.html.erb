@@ -45,7 +45,7 @@
 
     <div class='form-group row'>
       <div class='col-lg-4'>
-        <h5><%= f.label :郵便番号（ハイフンなし） %></h5>
+        <h5><%= f.label :郵便番号 %></h5>
       </div>
       <div class='col-lg-8'>
         <%= f.text_field :post_code, autofocus: true, autocomplete: 'post_code', class: 'form-control' %>
@@ -54,16 +54,34 @@
 
     <div class='form-group row'>
       <div class='col-lg-4'>
-        <h5><%= f.label :住所 %></h5>
+        <h5><%= f.label :都道府県 %></h5>
       </div>
       <div class='col-lg-8'>
-        <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>
       </div>
     </div>
 
     <div class='form-group row'>
       <div class='col-lg-4'>
-        <h5><%= f.label :電話番号（ハイフンなし） %></h5>
+        <h5><%= f.label :市 %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <%= f.text_field :city, autofocus: true, autocomplete: 'city', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :番地以降 %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <%= f.text_field :block, autofocus: true, autocomplete: 'block', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :電話番号%></h5>
       </div>
       <div class='col-lg-8'>
         <%= f.text_field :phone_number, autofocus: true, autocomplete: 'phone_number', class: 'form-control' %>
