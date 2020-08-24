@@ -8,7 +8,6 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @favorite_products = @customer.favorite_products
   end
 
   def update
