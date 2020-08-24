@@ -20,6 +20,9 @@
           });
           </script>  
         <!--/星評価-->
+        <% if @customer == current_customer %>
+          <%= link_to "削除", product_post_path(post.product, post), class:"btn-sm btn-danger destroy_book_32836", method: :delete,  remote: true, data: { confirm: '本当に削除しますか？' } %>
+        <% end %>
         </div>
       </div>
     </div>

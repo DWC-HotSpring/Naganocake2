@@ -50,13 +50,13 @@
     <br>
 
     <div class = "row">
-      <div class="col-lg-4 col-xs-offset-1">
+      <div class="col-lg-3 col-xs-offset-3">
         <%= render 'posts/post_form', {post: @post, product:@product} %>
       </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 col-xs-offset-1">
       <div id="product_posts_<%= @product.id %>">
         <%= render 'posts/post_content', product:@product %>
       </div>
     </div>
-
+<%= @average %>
 </div>
