@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :addresses
   has_many :favorites, dependent: :destroy
+  has_many :favorite_products, through: :favorites, source: :product
   has_many :posts
   
   #バリデーション(空欄)
@@ -27,7 +28,7 @@ class Customer < ApplicationRecord
 
 
   def full_name
-    self.first_name + self.last_name
+    self.last_name + self.first_name
   end
     
   #jp_prefectureを使用したprefecture_codeからprefecture_nameへの変換
@@ -44,5 +45,14 @@ class Customer < ApplicationRecord
   
   def address
     "%s %s %s"%([self.prefecture_name,self.city,self.block])
+  end
+
+  # 退会済みの会員はログインを不可にする
+  def active_for_authentication?
+    self.is_deleted == false
+  end
+
+  def inactive_message
+    "このアカウントは退会されています。"
   end
 end
