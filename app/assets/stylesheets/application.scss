@@ -37,6 +37,21 @@
    float: right;
  }
 
+ .header-text {
+   font-size: 10px;
+ }
+
+ .cart-text {
+   margin-top: -19px;
+ }
+
+ .cart-badge {
+   position: relative;
+   margin-left: 60%;
+   margin-top: -70px;
+   background-color: red;
+}
+
 /* フラッシュメッセージ */
 .flash {
   position: absolute;
@@ -164,3 +179,8 @@
 .pagination>.active>a {     
   background: #93c9ff;     /*背景の色を変える*/
 }
+
+/* 注文進捗状況 */
+.right-radius {
+  border-radius: 5px 30px 30px 5px;
+} 
