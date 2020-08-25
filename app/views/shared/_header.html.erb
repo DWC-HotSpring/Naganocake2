@@ -3,7 +3,7 @@
 		<!-- logo -->
 		<div>
 			<%= link_to customer_top_path do %>
-			<% image_tag 'nagano_cake_logo_bg.png', size: '230x80'%>
+			<% image_tag 'nagano_cake_logo_bg.png', size: '180x60'%>
 			<% end %>
 		</div>
 
@@ -19,16 +19,63 @@
 				<!-- customer -->
 				<% elsif customer_signed_in? %>
           <span class="navbar-text">ようこそ<%= current_customer.full_name %>さん！</span>
-					<li class="nav-item"><%= link_to 'マイページ',  customer_path(current_customer), class: 'nav-link btn' %></li>
-					<li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link btn' %></li>
-					<li class="nav-item"><%= link_to 'カート', cart_items_path, class: 'nav-link btn' %></li>
-					<li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link btn' %></li>
+					<li class="nav-item">
+						<%= link_to customer_path(current_customer), class: 'nav-link btn' do %>
+							<i class="fas fa-user fa-2x"></i><br>
+							<p class="header-text">マイページ</p>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to products_path, class: 'nav-link btn' do %>
+							<i class="fas fa-grip-horizontal fa-2x"></i><br>
+							<p class="header-text">商品一覧</p>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to cart_items_path, class: 'nav-link btn' do %>
+							<div class="icon-wrapper">
+								<i class="fas fa-shopping-cart fa-2x"></i><br>
+								<% sum_quantity = 0 %>
+								<% current_customer.cart_items.each do |cart_item| %>
+									<% sum_quantity += cart_item.quantity %>
+								<% end %>
+								<span class="badge cart-badge"><%= sum_quantity %></span>
+								<p class="header-text cart-text">カート</p>
+							</div>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link btn' do %>
+							<i class="fas fa-sign-out-alt fa-2x"></i><br>
+							<p class="header-text">ログアウト</p>
+						<% end %>
+					</li>
 				<!-- guest -->
 				<% else %>
-					<li class="nav-item"><%= link_to 'About', customer_about_path, class: 'nav-link btn' %></li>
-					<li class="nav-item"><%= link_to '商品一覧', products_path, class: 'nav-link btn' %></li>
-					<li class="nav-item" ><%= link_to '新規登録', new_customer_registration_path, class: 'nav-link btn' %></li>
-					<li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: 'nav-link btn' %></li>
+					<li class="nav-item">
+						<%= link_to customer_about_path, class: 'nav-link btn' do %>
+							<i class="fas fa-store fa-2x"></i><br>
+							<p class="header-text">About</p>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to products_path, class: 'nav-link btn' do %>
+							<i class="fas fa-grip-horizontal fa-2x"></i><br>
+							<p class="header-text">商品一覧</p>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to new_customer_registration_path, class: 'nav-link btn' do %>
+							<i class="fas fa-user-plus fa-2x"></i><br>
+							<p class="header-text">新規登録</p>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to new_customer_session_path, class: 'nav-link btn' do %>
+							<i class="fas fa-sign-in-alt fa-2x"></i><br>
+							<p class="header-text">ログイン</p>
+						<% end %>
+					</li>
 				<% end %>
 		  </ul>
 
