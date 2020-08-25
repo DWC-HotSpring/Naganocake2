@@ -20,12 +20,16 @@ Rails.application.routes.draw do
 
   get 'homes/top' => 'homes#top', as: 'customer_top'
   get 'homes/about' => 'homes#about', as: 'customer_about'
+
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
   resources :customers, only: [:edit, :show, :update] do
     member do
       get :withdraw
       put :withdraw_done
     end
   end
+  
   resources :products, only: [:index, :show] do
     collection do
       #ジャンル検索用に追加
