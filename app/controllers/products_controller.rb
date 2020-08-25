@@ -9,11 +9,11 @@ class ProductsController < ApplicationController
     @cart = @product.cart_items.new
     @genres = Genre.where(is_active: true)
     @post = Post.new
-
-    if @product.posts.nil?
+    
+    if @product.posts.blank?
       @average_review = 0
     else
-      @average_review = @product.posts.average(:rate).round(2)
+      @average_review = @product.posts.average(:rate).round(1)
     end
   end
 
