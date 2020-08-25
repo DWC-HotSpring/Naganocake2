@@ -37,16 +37,43 @@
    float: right;
  }
 
+/* フラッシュメッセージ */
+.flash {
+  position: absolute;
+}  
+
 /* メインビジュアル */ 
- #top-img {
-   background-image: url('top-img.jpeg');
-   background-repeat: no-repeat;
-   background-position: right 15% bottom 65%;
-   background-size: 100% auto;
-   margin-top: -20px;
-   color: white;
-   height: 300px;
- }
+.top-content {
+  margin-top: -20px;
+  position: relative;
+}
+
+.top-content h4 {
+  position: absolute;
+  color: white;
+  top: 150px;
+  left: 50px;
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+               0px -5px 16px rgba(255,255,255,0.3);
+}
+
+.top-content p {
+  position: absolute;
+  color: white;
+  top: 240px;
+  left: 70px;
+  font-weight: bold;
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+
+
+
+.top-img{
+  height: 500px;
+	width :100%;
+	object-fit: cover;
+}
 
 
  /* 商品 */ 
@@ -121,6 +148,11 @@
 .name-text {
   width: 150px;
   margin-top: 5px;
+}
+
+.badge-danger {
+  background: red;
+  color: white;
 }
 
 /* ページネーションデザイン */

@@ -1,16 +1,8 @@
 <div class="contaier">
+
   <!-- サイト紹介画像 -->
-  <div class="jumbotron" id="top-img">
-    <div class="container">
-      <h3 class="display-3">ようこそNaganoCakeへ</h3>
-      <p>
-        このサイトはケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </p><br>
-      <p><%= link_to 'Sign in >>', new_customer_session_path , class: "btn btn-primary" %></p>
-    </div>
-  </div>
+  <%= render 'homes/slick' %>
+
   <div class="row justify-content-center">
   <!-- ジャンル一覧 -->
   <%= render 'shared/genre_search', genres: @genres %>

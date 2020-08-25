@@ -18,6 +18,21 @@
 //= require_tree .
 //= require jquery.jpostal
 
+// トップページスライド
+$(function() {
+  $('.top-content').slick({
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      fade: true,
+  });
+
+  $('.slick-dots li').on('mouseover', function() {
+    $('.top-content').slick('goTo', $(this).index());
+  });
+});
+
+// 商品評価
 (function($) {
     'use strict';
   

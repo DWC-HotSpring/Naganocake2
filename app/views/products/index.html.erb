@@ -29,7 +29,13 @@
             <%= attachment_image_tag product, :image, size: "150x150", fallback: 'no_img.png', class: 'product-img' %>
             <p class="name-text"><%= product.name %></p>
           <% end %>
-          <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
+          <h5>
+            ¥<%= price_with_tax(product.price) %>(税込)
+            <% if product.is_active == false %>
+              <span class="badge badge-secondary">売り切れ</span>
+            <% end %>
+          </h5>
+          <span></span>
         </div>
       <% end %>
     </div>
