@@ -24,11 +24,37 @@
             <% end %>
             <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: 'no_img.png', class: "card-img-top"  %>
             <h4><%= product.name %></h4>
+          <div>
+          <% if product.posts.blank? %>
+          <% @average_review = 0 %> 
+          <%  else%>
+          <% @average_review = product.posts.average(:rate).round(1) %>  
+          <% end %>
+          <span id="star-rate-<%= product.id %>"></span>
+          <span>平均：<%= @average_review.to_f %>点</span>
+          <br>
+        </div>
           </div>
         <% end %>
         <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
       </div>
+       <!--星評価-->
+         <div id="star-rate-<%= product.id %>"></div>
+          <script>
+          $('#star-rate-<%= product.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @average_review %>,
+          });
+          </script>  
+        <!--/星評価-->
     <% end %>
   </div>
 </div>
 <%= paginate @products %>
+
+

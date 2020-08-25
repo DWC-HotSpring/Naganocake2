@@ -18,7 +18,12 @@
             <span id="favorites_buttons_<%= @product.id %>">
               <%= render partial: 'favorites/favorite_button', locals: { product: @product} %>
             </span>
-          </h3>
+          </h3>          
+        </div>
+        <div>
+          <span id="star-rate-<%= @product.id %>"></span>
+          <span>平均：<%= @average_review.to_f %>点</span>
+          <br>
         </div>
         <div>
           <p><%= @product.description %></p>
@@ -50,13 +55,29 @@
     <br>
 
     <div class = "row">
-      <div class="col-lg-4 col-xs-offset-1">
+      <div class="col-lg-3 col-xs-offset-3">
         <%= render 'posts/post_form', {post: @post, product:@product} %>
       </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 col-xs-offset-1">
       <div id="product_posts_<%= @product.id %>">
         <%= render 'posts/post_content', product:@product %>
       </div>
     </div>
+             <!--星評価-->
+         <div id="star-rate-<%= @product.id %>"></div>
+          <script>
+          $('#star-rate-<%= @product.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @average_review %>,
+          });
+          </script>  
+        <!--/星評価-->
 
 </div>
+
+ 
