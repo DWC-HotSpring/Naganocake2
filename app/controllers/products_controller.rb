@@ -9,8 +9,14 @@ class ProductsController < ApplicationController
     @cart = @product.cart_items.new
     @genres = Genre.where(is_active: true)
     @post = Post.new
-    @average = Post.group(:product_id).average(:rate)
+
+    if @product.posts.nil?
+      @average_review = 0
+    else
+      @average_review = @product.posts.average(:rate).round(2)
+    end
   end
+
 
   #ジャンル検索用
   def search
