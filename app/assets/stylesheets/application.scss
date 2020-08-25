@@ -37,17 +37,45 @@
    float: right;
  }
 
-/* メインビジュアル */ 
- #top-img {
-   background-image: url('top-img.jpeg');
-   background-repeat: no-repeat;
-   background-position: right 15% bottom 65%;
-   background-size: 100% auto;
-   margin-top: -20px;
-   color: white;
-   height: 300px;
- }
+/* フラッシュメッセージ */
+.flash {
+  position: absolute;
+}  
 
+/* メインビジュアル */ 
+.top-content {
+  margin-top: -20px;
+  position: relative;
+}
+
+.top-content h4 {
+  position: absolute;
+  color: white;
+  top: 150px;
+  left: 50px;
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+               0px -5px 16px rgba(255,255,255,0.3);
+}
+
+.top-content p {
+  position: absolute;
+  color: white;
+  top: 240px;
+  left: 70px;
+  font-weight: bold;
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+
+.top-img{
+  height: 500px;
+	width :100%;
+	object-fit: cover;
+}
+
+// body {
+//   background-image: url("leaves-pattern.png");
+// }
 
  /* 商品 */ 
  #about-img {
@@ -95,17 +123,44 @@
  .notify-badge{
   position: absolute;
   background-color: red;
-  height: 3rem;
+  height: 2.0rem;
   top: 0.5rem;
-  right: 2rem;
+  right: 0.5rem;
   width: 6rem;
   text-align: center;
-  line-height: 2rem;;
-  font-size: 2rem;
+  line-height: 1.0rem;;
+  font-size: 1.5rem;
   border-radius: 50%;
   color:white;
 }
 
+.product-img {
+  border-radius: 10%;
+}
+
 .favorite-card {
   margin-top: 110px;
+}
+
+.product-index {
+  height: 250px;
+}
+
+.name-text {
+  width: 150px;
+  margin-top: 5px;
+}
+
+.badge-danger {
+  background: red;
+  color: white;
+}
+
+/* ページネーションデザイン */
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
 }

@@ -33,7 +33,7 @@
           <tr>
             <th>
               <%= link_to product_path(cart_item.product) do%>
-              <%= attachment_image_tag(cart_item.product, :image, fallback: "no_img.png", size: "50x50") %>
+              <%= attachment_image_tag(cart_item.product, :image, fallback: "no_img.png", size: "50x50", class: "product-img") %>
               <% end %>
               <%= link_to product_path(cart_item.product) do%>
               <%= cart_item.product.name %>

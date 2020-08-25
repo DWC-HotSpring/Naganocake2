@@ -40,7 +40,7 @@
               </table>
 
             <h4 class="col-xs-7">配送先
-              <%= link_to "一覧を見る", order_products_path, class: "btn btn-primary btn-lg" %>
+              <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary btn-lg" %>
             </h4>
 
             <h4 class="col-xs-7">注文履歴
@@ -56,7 +56,7 @@
                   <% @customer.favorite_products.each do |my_favorite|  %>
                   <li class="list-group-item">
                     <%= link_to product_path(my_favorite) do%>
-                      <%= attachment_image_tag(my_favorite, :image, fallback: "no_img.png", size: "70x70") %>
+                      <%= attachment_image_tag(my_favorite, :image, fallback: "no_img.png", size: "70x70", class: "product-img") %>
                       <%= my_favorite.name %>
                     <% end %>
                     <br>

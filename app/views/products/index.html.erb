@@ -1,8 +1,12 @@
 <div class="row justify-content-center">
 
-  <%= render 'shared/genre_search', genres: @genres %>
+  <div class="col3">
+    <%= render 'shared/genre_search', genres: @genres %>
+  </div>
+
 
   <div class="col-8">
+
     <h2>
       <span>
       <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
@@ -14,32 +18,32 @@
       </span>
       <span>（全<%= @products.count %>件）</span>
     </h2>
+
     <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-3">
-        <%= link_to product_path(product) do %>
-          <div class="">
+      <% @products.each do |product| %>
+        <div class="col-2 product-index">
+          <%= link_to product_path(product) do %>
+
             <% if product.new_arrival? %>
               <span class="badge badge-warning notify-badge">New</span>
             <% end %>
-            <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: 'no_img.png', class: "card-img-top"  %>
-            <h4><%= product.name %></h4>
-          <div>
+
+            <%= attachment_image_tag product, :image, size: "150x150", fallback: 'no_img.png', class: 'product-img' %>
+            <p class="name-text"><%= product.name %></p>
+
+          <% end %>
+
           <% if product.posts.blank? %>
-          <% @average_review = 0 %> 
+            <% @average_review = 0 %> 
           <%  else%>
-          <% @average_review = product.posts.average(:rate).round(1) %>  
+            <% @average_review = product.posts.average(:rate).round(1) %>  
           <% end %>
           <span id="star-rate-<%= product.id %>"></span>
-          <span>平均：<%= @average_review.to_f %>点</span>
+          <span><%= @average_review.to_f %></span>
           <br>
-        </div>
-          </div>
-        <% end %>
-        <h4>¥<%= price_with_tax(product.price) %>(税込)</h4>
-      </div>
-       <!--星評価-->
-         <div id="star-rate-<%= product.id %>"></div>
+
+          <!--星評価-->
+          <div id="star-rate-<%= product.id %>"></div>
           <script>
           $('#star-rate-<%= product.id %>').raty({
             size: 36,
@@ -51,10 +55,27 @@
             score: <%= @average_review %>,
           });
           </script>  
-        <!--/星評価-->
-    <% end %>
+          <!--/星評価-->
+
+          <h5>
+            ¥<%= price_with_tax(product.price) %>(税込)
+            <% if product.is_active == false %>
+              <span class="badge badge-secondary">売り切れ</span>
+            <% end %>
+          </h5>
+        </div>
+      <% end %>
+    </div>
+
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-6">
+    <%= paginate @products %>
   </div>
 </div>
-<%= paginate @products %>
 
 
