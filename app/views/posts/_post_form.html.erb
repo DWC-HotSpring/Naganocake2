@@ -1,9 +1,12 @@
+<% if customer_signed_in? %>
+  
 <!-- 口コミ入力フォーム -->
 <%= form_with(model: [@product, @post]) do |f| %>
 
   <!--エラーメッセージ-->
-  <%= render 'shared/error_messages', model: f.object %>
-
+  <div class = "error">
+    <%= render 'shared/error_messages', model: f.object %>
+  </div>
   <!--商品コードの送信-->
   <%= f.hidden_field :product_id, { value: product.id} %>
 
@@ -51,3 +54,4 @@
 
 <% end %>
 <!-- /口コミ入力フォーム -->
+<% end %>
