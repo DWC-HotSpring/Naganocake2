@@ -791,3 +791,15 @@ $(function() {
     function myfunc(value) {
       window.location.replace('/products/?option=' + value);
     }
+
+    // function () {
+    //   var param = location.search
+    //   var select = document.getElementById("sort-select");
+    //   if(document.URL.match(new)) {
+    //     select.options[1].selected = true
+    //   } else if (vdocument.URL.match(price_low)) {
+    //     select.options[2].selected = true
+    //   };
+    // };
+
+    

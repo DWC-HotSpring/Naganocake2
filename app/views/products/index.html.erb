@@ -12,7 +12,7 @@
       <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
       <% if @genre %> 
         <%= @genre.name %>一覧
-        <span>（全<%= @products.count %>件）</span>
+        <span>（全<%= @products.size %>件）</span>
       <% else %>
         商品一覧
         <span>（全<%= @product_number %>件）</span>
@@ -22,7 +22,7 @@
 
       <%#= プルダウンを選択後にページに遷移  %>
       <span class="sort-box">
-        <select name="search" onChange="myfunc(this.value)">
+        <select name="search" onChange="myfunc(this.value)" id="sort-select">
           <option value="">並び替え</option>
           <option value="new">新着順</option>
           <option value="price_low">価格が安い順</option>

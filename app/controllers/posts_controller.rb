@@ -6,7 +6,7 @@ class PostsController < ApplicationController
         if @post.save
           @average_rate = @product.posts.average(:rate).round(1).to_f
           @product.update_attribute(:average_rate, @average_rate)
-          flash[:notice] = "コメントしました"
+          flash.now[:notice] = "コメントしました"
         else
           render 'products/show'
         end
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         @average_rate = @product.posts.average(:rate).round(1).to_f
         @product.update_attribute(:average_rate, @average_rate)
       end
-      flash[:alert] = "コメントを削除しました"
+      flash.now[:alert] = "コメントを削除しました"
     end
 
     private

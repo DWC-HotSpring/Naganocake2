@@ -26,7 +26,9 @@
 }
 /* ヘッダー */ 
  header {
-  background-color: #c9e9e6;
+  background-color: rgba(255,255,255,0);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
 }
 
  .submit{
@@ -60,14 +62,15 @@
 
 /* メインビジュアル */ 
 .top-content {
-  margin-top: -20px;
+  margin-top: -120px;
   position: relative;
+  z-index: -999;
 }
 
 .top-content h4 {
   position: absolute;
   color: white;
-  top: 150px;
+  top: 170px;
   left: 50px;
   font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
   text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
@@ -77,16 +80,18 @@
 .top-content p {
   position: absolute;
   color: white;
-  top: 240px;
+  top: 260px;
   left: 70px;
   font-weight: bold;
   font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+               0px -5px 16px rgba(255,255,255,0.3);
 }
 
 .top-img{
-  height: 500px;
+  height: 600px;
 	width :100%;
-	object-fit: cover;
+  object-fit: cover;
 }
 
 // body {
@@ -188,4 +193,9 @@
 /* 注文進捗状況 */
 .right-radius {
   border-radius: 5px 30px 30px 5px;
+} 
+
+/* 顧客側登録情報編集画面 */
+.withdraw-btn {
+  margin-left: 90px;
 } 
