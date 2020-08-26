@@ -785,3 +785,8 @@ $(function() {
       targetType:   'hint'
     };
   })(jQuery);
+
+// ソート機能
+    function myfunc(value) {
+      window.location.replace('/products/?option=' + value);
+    }

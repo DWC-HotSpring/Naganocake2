@@ -5,6 +5,8 @@ class PostsController < ApplicationController
         @post.customer_id = current_customer.id
         if @post.save
             flash[:notice] = "コメントしました"
+            @average_rate = @product.posts.average(:rate).round(1).to_f
+            @product.update_attribute(:average_rate, @average_rate)
           else
             render 'products/show'
           end
