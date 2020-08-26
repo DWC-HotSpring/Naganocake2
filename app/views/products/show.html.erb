@@ -14,10 +14,13 @@
             <% if @product.new_arrival? %>
               <span class="badge badge-danger">New</span>
             <% end %>
+             <% if @product.is_recommend? %>
+              <span class="badge badge-info">オススメ</span>
+            <% end %>
             <!-- favorite button -->
-            <span id="favorites_buttons_<%= @product.id %>">
+            <div id="favorites_buttons_<%= @product.id %>">
               <%= render partial: 'favorites/favorite_button', locals: { product: @product} %>
-            </span>
+            </div>
           </h3>          
         </div>
         <div id="product_rates_<%= @product.id %>">
