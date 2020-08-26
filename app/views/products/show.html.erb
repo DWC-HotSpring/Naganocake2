@@ -20,9 +20,8 @@
             </span>
           </h3>          
         </div>
-        <div>
-          <span id="star-rate-<%= @product.id %>"></span>
-          <span>平均：<%= @average_review.to_f %>点</span>
+        <div id="product_rates_<%= @product.id %>">
+          <%= render 'posts/product_rates', product:@product %>
           <br>
         </div>
         <div>
