@@ -37,7 +37,7 @@
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-2 product-index">
-          <%= link_to product_path(product) do %>
+          <%= link_to product_path(product), class: "text-decoration-none" do %>
 
             <% if product.new_arrival? %>
               <span class="badge badge-warning notify-badge">New</span>

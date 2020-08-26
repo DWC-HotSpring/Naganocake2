@@ -186,6 +186,10 @@
   font-size: 14px;
 }
 
+.under-shadow {
+  box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.05);
+}
+
 /* ページネーションデザイン */
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
