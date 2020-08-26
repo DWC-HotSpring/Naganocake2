@@ -1,9 +1,5 @@
 <div class="container">
-  <div class='col-lg-10'>
-    <div class='row align-items-center'>
-      <h3 class="heading">登録情報編集</h3>
-    </div>
-
+  <h3 class="heading">新規登録</h3>
   <div class='row'>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "customers/shared/error_messages", resource: resource %>
@@ -14,10 +10,7 @@
           </div>
           <div class='col-lg-6'>
             <span style='display: inline-block;'>
-              (姓)<%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control' %>
-            </span>
-            <span style='display: inline-block;'>
-              (名)<%= f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control' %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control' %>
             </span>
           </div>
         </div>
@@ -28,10 +21,7 @@
           </div>
           <div class='col-lg-6'>
             <span style='display: inline-block;'>
-              (セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: 'last_name_kana', class: 'form-control' %>
-            </span>
-            <span style='display: inline-block;'>
-              (メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: 'first_name_kana', class: 'form-control' %>
+              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: 'first_name_kana', class: 'form-control' %>
             </span>
           </div>
         </div>
@@ -92,27 +82,27 @@
 
         <div class="form-group row">
           <div class='col-lg-6'>
-            <%= f.label :パスワード %>
+            <h5><%= f.label :パスワード %></h5>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %>
           </div>
           <div class='col-lg-6'>
-              <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">
           <div class='col-lg-6'>
-            <%= f.label :パスワード（確認用） %>
+            <h5><%= f.label :パスワード（確認用） %></h5>
           </div>
           <div class='col-lg-6'>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group row">
           <div class="col-lg-4 offset-lg-8">
-            <%= f.submit '新規投稿', class:'btn btn-primary' %>
+            <%= f.submit '新規登録', class:'btn btn-primary' %>
           </div>
         </div>
     <% end %>
