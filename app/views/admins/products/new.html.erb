@@ -29,6 +29,10 @@
                     <td>販売ステータス</td>
                     <td><%= f.select :is_active,[["販売中",true],["売り切れ",false]] %></td>
                 </tr>
+                <tr>
+                    <td>オススメ</td>
+                    <td><%= f.select :is_recommend,[["表示",true],["表示しない",false]] %></td>
+                </tr>
             </table>
             </div>
         </div>
