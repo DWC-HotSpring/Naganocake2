@@ -1,4 +1,4 @@
-<h3　class= "heading">商品編集</h3>
+<h3 class= "heading">商品編集</h3>
 <div class="container">
         <%= form_with model:[:admins,@product], local: true do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
@@ -28,6 +28,10 @@
                 <tr>
                     <td>販売ステータス</td>
                     <td><%= f.select :is_active,[["販売中",true],["売り切れ",false]] %></td>
+                </tr>
+                <tr>
+                    <td>オススメ</td>
+                    <td><%= f.select :is_recommend,[["表示",true],["表示しない",false]] %></td>
                 </tr>
             </table>
             </div>
