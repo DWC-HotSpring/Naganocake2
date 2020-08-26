@@ -18,6 +18,7 @@
  @import 'bootstrap';
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import "toastr";
 
  * {
   margin: 0;
@@ -52,10 +53,10 @@
    background-color: red;
 }
 
-/* フラッシュメッセージ */
-.flash {
-  position: absolute;
-}  
+.heading{
+  margin-left: 30px;
+}
+
 
 /* メインビジュアル */ 
 .top-content {

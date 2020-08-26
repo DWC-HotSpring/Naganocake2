@@ -15,6 +15,7 @@
 // turbolinks
 //= require jquery3
 //= require bootstrap-sprockets
+//= require toastr
 //= require_tree .
 //= require jquery.jpostal
 
