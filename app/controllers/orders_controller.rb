@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
       render :thanks
     else
       redirect_to root_path
-      flash[:notice] = 'カートが空です。'
+      flash[:alert] = 'カートが空です。'
     end
   end
 

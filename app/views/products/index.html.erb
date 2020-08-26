@@ -12,12 +12,27 @@
       <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
       <% if @genre %> 
         <%= @genre.name %>一覧
-        <% else %>
+        <span>（全<%= @products.count %>件）</span>
+      <% else %>
         商品一覧
+        <span>（全<%= @product_number %>件）</span>
+        <%#= @products.select('products.*, products.id').count %>
       <% end %>
       </span>
-      <span>（全<%= @products.count %>件）</span>
+
+      <%#= プルダウンを選択後にページに遷移  %>
+      <span class="sort-box">
+        <select name="search" onChange="myfunc(this.value)">
+          <option value="">並び替え</option>
+          <option value="new">新着順</option>
+          <option value="price_low">価格が安い順</option>
+          <option value="price_high">価格が高い順</option>
+          <option value="hot_selling">売れ筋順</option>
+          <option value="star">評価順</option>
+        </select>
+      </span>
     </h2>
+
 
     <div class="row">
       <% @products.each do |product| %>
@@ -33,13 +48,8 @@
 
           <% end %>
 
-          <% if product.posts.blank? %>
-            <% @average_review = 0 %> 
-          <%  else%>
-            <% @average_review = product.posts.average(:rate).round(1) %>  
-          <% end %>
           <span id="star-rate-<%= product.id %>"></span>
-          <span><%= @average_review.to_f %></span>
+          <span><%= product.average_rate %></span>
           <br>
 
           <!--星評価-->
@@ -52,7 +62,7 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
             readOnly: true,
-            score: <%= @average_review %>,
+            score: <%= product.average_rate %>,
           });
           </script>  
           <!--/星評価-->

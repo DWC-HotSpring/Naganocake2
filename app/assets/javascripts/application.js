@@ -15,6 +15,7 @@
 // turbolinks
 //= require jquery3
 //= require bootstrap-sprockets
+//= require toastr
 //= require_tree .
 //= require jquery.jpostal
 
@@ -785,3 +786,8 @@ $(function() {
       targetType:   'hint'
     };
   })(jQuery);
+
+// ソート機能
+    function myfunc(value) {
+      window.location.replace('/products/?option=' + value);
+    }

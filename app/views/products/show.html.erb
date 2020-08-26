@@ -51,7 +51,7 @@
         </p>
       </div>
 
-      <%= link_to '戻る', :back, class: 'btn btn-primary' %>
+      <%= link_to '商品一覧へ戻る', products_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
@@ -66,20 +66,7 @@
         <%= render 'posts/post_content', product:@product %>
       </div>
     </div>
-             <!--星評価-->
-         <div id="star-rate-<%= @product.id %>"></div>
-          <script>
-          $('#star-rate-<%= @product.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @average_review %>,
-          });
-          </script>  
-        <!--/星評価-->
+
 
 </div>
 
