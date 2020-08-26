@@ -74,3 +74,4 @@ gem 'jp_prefecture'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'font-awesome-sass', '~> 5.8.1'
+gem "toastr-rails"
