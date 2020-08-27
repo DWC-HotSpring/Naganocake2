@@ -111,14 +111,37 @@
   object-fit: cover;
 }
 
-.multiple .slick-next {
-  right: 17px;
-  z-index: 100;
+.space-left {
+  margin-left: 80px;
 }
 
-.multiple .slick-prev {
-  left: 23px;
-  z-index: 100;
+/* サイドバー */
+.sidebar {
+  box-shadow: 8px 0px 3px -3px rgba(0, 0, 0, 0.05);
+} 
+
+.genre-title {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+.genre-title:before, .genre-title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 25px;
+  height: 1px;
+  background-color: black;
+}
+
+.genre-title:before {
+  left: 25px;
+}
+.genre-title:after {
+  right: 25px;
 }
 
  /* 商品 */ 
@@ -167,19 +190,19 @@
  .notify-badge{
   position: absolute;
   background-color: red;
-  height: 2.0rem;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 6rem;
+  height: 2.3rem;
+  top: -1.0rem;
+  right: 2.0rem;
+  width: 5rem;
   text-align: center;
-  line-height: 1.0rem;;
+  line-height: 1.5rem;;
   font-size: 1.5rem;
-  border-radius: 50%;
+  border-radius: 10%;
   color:white;
 }
 
 .product-img {
-  border-radius: 10%;
+  border-radius: 7%;
 }
 
 .favorite-card {
@@ -211,6 +234,41 @@
 
 .under-shadow {
   box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.05);
+}
+
+.review-button {
+  margin-top: 100px;
+  margin-left: 210px;
+}
+
+.under-content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  border-top: thin solid rgba(53, 47, 47, 0.15);
+}
+
+.under-content-left {
+  border-right: thin solid black;
+}
+
+.under-content-right {
+  margin: 0 auto;
+}
+
+.posts {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 0 4px gray;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  color: red;
 }
 
 /* ページネーションデザイン */
