@@ -2,3 +2,4 @@ $('#product_posts_<%= @product.id %>').html("<%= j(render partial: 'posts/post_c
 $('#post_content').val('')
 $('#post_title').val('')
 $('#product_posts_<%= @product.id %>').html("<%= j(render partial: 'posts/post_content', locals: {product: @product}) %>");
+$('#product_rates_<%= @product.id %>').html("<%= j(render partial: 'posts/product_rates', locals: {product: @product}) %>");

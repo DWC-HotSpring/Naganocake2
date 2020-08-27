@@ -23,16 +23,15 @@
             </div>
           </h3>          
         </div>
-        <div>
-          <span id="star-rate-<%= @product.id %>"></span>
-          <span>平均：<%= @product.average_rate %>点</span>
+        <div id="product_rates_<%= @product.id %>">
+          <%= render 'posts/product_rates', product:@product %>
           <br>
         </div>
         <div>
           <p><%= @product.description %></p>
         </div>
         <div>
-          <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込） + 送料¥800</p>
+          <p><strong>￥<%= price_with_tax(@product.price) %></strong>（税込）</p>
         </div>
 
       <%= form_with(model: [@product,@cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
@@ -50,8 +49,11 @@
 
       <div>
         <p><br>
-          ※一つ一つ手作りの為、写真と若干の色合いやデザイン等異なる場合がございます。<br>
+          ※一つ一つ手作りの為、写真と若干異なる場合がございます。<br>
           ご了承の上お買い求めくださいませ。
+        </p>
+        <p>
+          送料は一回の配送につき全国一律800円です。
         </p>
       </div>
 
@@ -70,20 +72,7 @@
         <%= render 'posts/post_content', product:@product %>
       </div>
     </div>
-             <!--星評価-->
-         <div id="star-rate-<%= @product.id %>"></div>
-          <script>
-          $('#star-rate-<%= @product.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @product.average_rate %>,
-          });
-          </script>  
-        <!--/星評価-->
+
 
 </div>
 

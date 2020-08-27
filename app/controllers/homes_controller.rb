@@ -8,5 +8,7 @@ class HomesController < ApplicationController
     @genres = Genre.where(is_active: true)
     # 商品のオススメ取得
     @recommend_items = Product.where(is_recommend: true).limit(4)
+    # 商品の新着取得
+    @new_products = Product.includes(:genre).where(genres: {is_active: true}).order('products.created_at DESC').limit(4)
   end
 end

@@ -1,0 +1,27 @@
+<span id="star-rate-<%= @product.id %>"></span>
+<span>平均：<%= @product.average_rate %>点</span>
+
+<!--星評価-->
+  <div id="star-rate-<%= @product.id %>"></div>
+  <script>
+  $('#star-rate-<%= @product.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @product.average_rate %>,
+  });
+  </script>  
+<!--/星評価-->
+
+<% if flash.any? %>
+  <script type="text/javascript">
+    <% flash.each do |key, value| %>
+      <% key = "success" if key == "notice" %>
+      <% key = "error" if key == "alert" %>
+      toastr['<%= key %>']('<%= value %>');
+    <% end %>
+  </script>
+<% end %>

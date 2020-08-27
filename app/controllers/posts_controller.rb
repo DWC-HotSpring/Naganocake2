@@ -4,18 +4,25 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.customer_id = current_customer.id
         if @post.save
-            flash[:notice] = "コメントしました"
-            @average_rate = @product.posts.average(:rate).round(1).to_f
-            @product.update_attribute(:average_rate, @average_rate)
-          else
-            render 'products/show'
-          end
+          @average_rate = @product.posts.average(:rate).round(1).to_f
+          @product.update_attribute(:average_rate, @average_rate)
+          flash.now[:notice] = "コメントしました"
+        else
+          render 'products/show'
+        end
     end
 
     def destroy
       @product = Product.find(params[:product_id])
       @post = Post.find_by(id: params[:id], product_id: params[:product_id])
       @post.destroy
+      if @product.posts.blank?
+        @product.update_attribute(:average_rate, 0.0)
+      else
+        @average_rate = @product.posts.average(:rate).round(1).to_f
+        @product.update_attribute(:average_rate, @average_rate)
+      end
+      flash.now[:alert] = "コメントを削除しました"
     end
 
     private

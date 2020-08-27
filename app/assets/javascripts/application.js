@@ -33,6 +33,23 @@ $(function() {
   });
 });
 
+// ヘッダースクロール時の色変化
+$(function(){
+  var imgHeight = $('.js-mainVisual').outerHeight(); //画像の高さを取得。これがイベント発火位置になる。
+  var header = $('.js-header'); //ヘッダーコンテンツ
+
+  $(window).on('load scroll', function(){
+     if ($(window).scrollTop() < imgHeight) {
+       //メインビジュアル内にいるので、クラスを外す。
+       header.removeClass('headerColor-default');
+     }else {
+       //メインビジュアルより下までスクロールしたので、クラスを付けて色を変える
+       header.addClass('headerColor-default');
+     }
+  });
+});
+
+
 // 商品評価
 (function($) {
     'use strict';
@@ -791,3 +808,15 @@ $(function() {
     function myfunc(value) {
       window.location.replace('/products/?option=' + value);
     }
+
+    // function () {
+    //   var param = location.search
+    //   var select = document.getElementById("sort-select");
+    //   if(document.URL.match(new)) {
+    //     select.options[1].selected = true
+    //   } else if (vdocument.URL.match(price_low)) {
+    //     select.options[2].selected = true
+    //   };
+    // };
+
+    
