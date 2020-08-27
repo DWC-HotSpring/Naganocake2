@@ -59,6 +59,10 @@
   margin-left: 30px;
 }
 
+.headerColor-default {
+  background-color: #fff;
+  /* （画像よりも下までスクロールした時に変える背景色） */
+}
 
 /* メインビジュアル */ 
 .top-content {
@@ -70,33 +74,52 @@
 .top-content h4 {
   position: absolute;
   color: white;
-  top: 170px;
-  left: 50px;
-  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  top: 200px;
+  left: 575px;
+  line-height: 100px;
+  font-family: 'Economica', sans-serif;
+  font-size: 70px;
   text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
                0px -5px 16px rgba(255,255,255,0.3);
+  box-shadow: 0 0 8px gray;
+  width: 300px;
 }
 
 .top-content p {
   position: absolute;
   color: white;
-  top: 260px;
-  left: 70px;
+  top: 530px;
+  left: 575px;
   font-weight: bold;
-  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+  font-family: "Sawarabi Mincho";
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+               0px -5px 16px rgba(255,255,255,0.3);
+}
+
+.top-content i {
+  position: absolute;
+  top: 680px;
+  left: 708px;
+  color: white;
   text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
                0px -5px 16px rgba(255,255,255,0.3);
 }
 
 .top-img{
-  height: 600px;
+  height: 770px;
 	width :100%;
   object-fit: cover;
 }
 
-// body {
-//   background-image: url("leaves-pattern.png");
-// }
+.multiple .slick-next {
+  right: 17px;
+  z-index: 100;
+}
+
+.multiple .slick-prev {
+  left: 23px;
+  z-index: 100;
+}
 
  /* 商品 */ 
  #about-img {
