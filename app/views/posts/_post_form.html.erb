@@ -1,57 +1,66 @@
-<% if customer_signed_in? %>
-  
-<!-- 口コミ入力フォーム -->
-<%= form_with(model: [@product, @post]) do |f| %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">「<%= @product.name %>」へのレビュー</h5>
+      </div>
 
-  <!--エラーメッセージ-->
-  <div class = "error">
-    <%= render 'shared/error_messages', model: f.object %>
-  </div>
-  <!--商品コードの送信-->
-  <%= f.hidden_field :product_id, { value: product.id} %>
+      <!-- 口コミ入力フォーム -->
+      <div class="modal-body">
+        <%= form_with(model: [@product, @post]) do |f| %>
 
-  <!-- タイトル -->
-  <div class="form-group row">
-    <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
-    <div class="col-md-9">
-      <%= f.text_field :title, class: "form-control" %>
+          <!--エラーメッセージ-->
+          <div class = "error">
+            <%= render 'shared/error_messages', model: f.object %>
+          </div>
+          <!--商品コードの送信-->
+          <%= f.hidden_field :product_id, { value: product.id} %>
+
+          <!-- 評価 -->
+          <div class="form-group row" id="star">
+            <%= f.label :rate, '評価 ', class:'col-md-3', style:'margin-right: 15px;' %>
+            <%= f.hidden_field :rate, id: :review_star %>
+          </div>
+          
+          <!-- タイトル -->
+          <div class="form-group row">
+            <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
+            <div class="col-md-9">
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+          </div>
+
+          <!-- 評価javascript -->
+          <script>
+          $('#star').raty({
+            size     : 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'post[rate]',
+            half: true,
+          });
+          </script>  
+
+          <!-- 口コミ -->
+          <div class="form-group row">
+            <%= f.label :content, 'レビュー内容 ', class:'col-md-3 col-form-label' %>
+            <div class="col-md-9">
+              <%= f.text_area :content, class: "form-control", rows: "4",
+                placeholder:'コメントを入力してください' %>
+            </div>
+          </div>
+      </div>
+      <!-- /口コミ入力フォーム -->
+
+      <!-- 確認ボタン -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit '投稿する', class:"btn btn-success" %>
+      </div>
+      <% end %>
+
     </div>
   </div>
-
-  <!-- 評価 -->
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :rate, id: :review_star %>
-  </div>
-
-  <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>  
-
-  <!-- 口コミ -->
-  <div class="form-group row">
-    <%= f.label :content, '口コミ内容 ', class:'col-md-3 col-form-label' %>
-    <div class="col-md-9">
-      <%= f.text_area :content, class: "form-control", rows: "4",
-        placeholder:'コメントを入力してください' %>
-    </div>
-  </div>
-
-  <!-- 確認ボタン -->
-  <div class="form-group row justify-content-end">
-    <div class="col-md-9">
-      <%= f.submit '投稿する', class:"btn btn-success" %>
-    </div>
-  </div>
-
-<% end %>
-<!-- /口コミ入力フォーム -->
-<% end %>
+</div>

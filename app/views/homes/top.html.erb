@@ -3,10 +3,12 @@
   <!-- サイト紹介画像 -->
   <%= render 'homes/slick' %>
 
-  <div class="row justify-content-center">
+  <div class="row">
   <!-- ジャンル一覧 -->
-  <%= render 'shared/genre_search', genres: @genres %>
-    <div class="col-8">
+  <div class="col-2">
+    <%= render 'shared/genre_search', genres: @genres %>
+  </div>
+    <div class="col-8 space-left">
       <!-- ランキング表示 -->
       <h4>売れ筋ランキング</h4>
       <div class="row justify-content-between under-shadow">

@@ -3,7 +3,7 @@
     <%= f.select :model,
         {"顧客": "customer", "商品": "product"},
         {include_blank: "選択してください"},{ class: 'form-control',required: true} %>
-      <%= f.button :type => "submit", class:"btn mb-2 submit" do %>
+        <%= f.button :type => "submit", class:"btn submit" do %>
             <i class="fas fa-search fa-lg"></i>
         <% end %>
 <% end %>

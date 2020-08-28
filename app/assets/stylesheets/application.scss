@@ -24,6 +24,17 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+
 /* ヘッダー */ 
  header {
   background-color: rgba(255,255,255,0);
@@ -63,6 +74,18 @@
   background-color: #fff;
   /* （画像よりも下までスクロールした時に変える背景色） */
 }
+
+/* フッター */
+.footer {
+  position: absolute;
+  text-align: center;
+  line-height: 80px;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255,255,255,0);
+  box-shadow: 0px -8px 3px -3px rgba(0, 0, 0, 0.05);
+} 
 
 /* メインビジュアル */ 
 .top-content {
@@ -111,14 +134,37 @@
   object-fit: cover;
 }
 
-.multiple .slick-next {
-  right: 17px;
-  z-index: 100;
+.space-left {
+  margin-left: 80px;
 }
 
-.multiple .slick-prev {
-  left: 23px;
-  z-index: 100;
+/* サイドバー */
+.sidebar {
+  box-shadow: 8px 0px 3px -3px rgba(0, 0, 0, 0.05);
+} 
+
+.genre-title {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+.genre-title:before, .genre-title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 25px;
+  height: 1px;
+  background-color: black;
+}
+
+.genre-title:before {
+  left: 25px;
+}
+.genre-title:after {
+  right: 25px;
 }
 
  /* 商品 */ 
@@ -167,19 +213,19 @@
  .notify-badge{
   position: absolute;
   background-color: red;
-  height: 2.0rem;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 6rem;
+  height: 2.3rem;
+  top: -1.0rem;
+  right: 2.0rem;
+  width: 5rem;
   text-align: center;
-  line-height: 1.0rem;;
+  line-height: 1.5rem;;
   font-size: 1.5rem;
-  border-radius: 50%;
+  border-radius: 10%;
   color:white;
 }
 
 .product-img {
-  border-radius: 10%;
+  border-radius: 7%;
 }
 
 .favorite-card {
@@ -213,6 +259,62 @@
   box-shadow: 0 32px 30px -30px rgba(53, 47, 47, 0.05);
 }
 
+.review-button {
+  margin-top: 100px;
+  margin-left: 350px;
+}
+
+.index-title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+/* 商品詳細下部 ここから */
+.under-content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  border-top: thin solid rgba(53, 47, 47, 0.15);
+}
+
+.under-content-left {
+  border-right: thin solid rgba(53, 47, 47, 0.15);
+  padding-right: 50px;
+}
+
+.same-genre img {
+   width: 100%;
+}
+.same-genre div {
+   margin: 0 5px;
+}
+.same-genre .slick-next {
+   right: 17px; z-index: 100;
+}
+.same-genre .slick-prev {
+   left: 23px; z-index: 100;
+}
+
+.under-content-right {
+  margin: 0 auto;
+}
+
+.posts {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 0 4px gray;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  color: red;
+}
+/* 商品詳細下部 ここまで */
+
 /* ページネーションデザイン */
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
@@ -231,3 +333,45 @@
 .withdraw-btn {
   margin-left: 90px;
 } 
+
+/* 管理者ダッシュボード */
+.admin-content {
+  position: relative;
+  height: 150px;
+  width: 250px;
+  border-radius: 0.5rem;
+  margin: 8px;
+  box-shadow: 0 0 8px gray;
+}
+
+.dashbord-counter {
+  margin-top: -5px;
+}
+
+.dashbord-icon {
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+}
+
+.admin-orders {
+  background-color: #17a2b8;
+  color: white;
+}
+.admin-products {
+  background-color: #28a745;
+  color: white;
+}
+.admin-customers {
+  background-color: #dc3545;
+  color: white;
+}
+
+.more-info {
+  text-decoration: none;
+  background: rgba(0,0,0,0.15);
+}
+.more-info:link, .more-info:visited, .more-info:hover, .more-info:active {
+  color: white;
+  text-decoration: none;
+}
