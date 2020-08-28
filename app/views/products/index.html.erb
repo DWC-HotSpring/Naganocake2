@@ -37,17 +37,17 @@
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-2 product-index">
-          <%= link_to product_path(product), class: "text-decoration-none" do %>
 
-            <% if product.new_arrival? %>
-              <span class="badge badge-warning notify-badge">New</span>
+          <div class="index-hover">
+            <%= link_to product_path(product), class: "text-decoration-none" do %>
+              <% if product.new_arrival? %>
+                <span class="badge badge-warning notify-badge">New</span>
+              <% end %>
+              <%= attachment_image_tag product, :image, size: "150x150", fallback: 'no_img.png', class: 'product-img' %>
             <% end %>
+          </div>
 
-            <%= attachment_image_tag product, :image, size: "150x150", fallback: 'no_img.png', class: 'product-img' %>
-            <p class="name-text"><%= product.name %></p>
-
-          <% end %>
-
+              <p class="name-text"><%= product.name %></p>
           <span id="star-rate-<%= product.id %>"></span>
           <span><%= product.average_rate %></span>
           <br>
