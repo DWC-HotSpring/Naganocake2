@@ -80,10 +80,13 @@
         <h4>同じカテゴリーの商品</h4>
         <div class="same-genre">
           <% @similar_products.each do |product| %>
-            <div>
+            <div class="product-hover">
               <%= link_to product_path(product), class: "text-decoration-none" do %>
                 <%= attachment_image_tag product, :image, size: "250x250", fallback: 'no_img.png', class: 'product-img' %>
               <% end %>
+              <div class="mask">
+                <div class="caption"><%= product.name %></div>
+              </div>
             </div>
           <% end %>
         </div>
