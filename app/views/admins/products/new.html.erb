@@ -1,6 +1,6 @@
 <h3 class= "heading">商品新規登録</h3>
 <div class="container">
-    <%= form_with model:[:admins,@product] do |f| %>
+    <%= form_with model:[:admins,@product], local: true do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
         <div class="row">
             <div class ="col-xs-4 col-xs-offset-1">
