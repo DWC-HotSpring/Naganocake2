@@ -76,11 +76,21 @@
 
     <div class="row">
 
-      <div class="col-7 under-content-left">
-        <h3>aaaaa</h3>
+      <div class="col-8 under-content-left">
+        <h4>同じカテゴリーの商品</h4>
+        <div class="same-genre">
+          <% @similar_products.each do |product| %>
+            <div>
+              <%= link_to product_path(product), class: "text-decoration-none" do %>
+                <%= attachment_image_tag product, :image, size: "250x250", fallback: 'no_img.png', class: 'product-img' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+ 
       </div>
 
-      <div class="col-3 under-content-right">
+      <div class="col-2 under-content-right">
         <div id="product_posts_<%= @product.id %>">
           <%= render 'posts/post_content', product:@product %>
         </div>
