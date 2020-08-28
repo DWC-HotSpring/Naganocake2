@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-    require "date"
 
     belongs_to :genre
     has_many :cart_items
@@ -15,8 +14,7 @@ class Product < ApplicationRecord
 
     #一週間以内に登録されたか判定するメソッド
     def new_arrival?
-      now = Date.today
-      self.created_at.between?(1.week.ago, now)
+      self.created_at.between?(1.week.ago, Time.now)
     end
 
     #boolean型はpresence: trueにしてしまうと、falseをblank?メソッドでカラムを空だと認識してエラーとなる
