@@ -333,3 +333,45 @@ body {
 .withdraw-btn {
   margin-left: 90px;
 } 
+
+/* 管理者ダッシュボード */
+.admin-content {
+  position: relative;
+  height: 150px;
+  width: 250px;
+  border-radius: 0.5rem;
+  margin: 8px;
+  box-shadow: 0 0 8px gray;
+}
+
+.dashbord-counter {
+  margin-top: -5px;
+}
+
+.dashbord-icon {
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+}
+
+.admin-orders {
+  background-color: #17a2b8;
+  color: white;
+}
+.admin-products {
+  background-color: #28a745;
+  color: white;
+}
+.admin-customers {
+  background-color: #dc3545;
+  color: white;
+}
+
+.more-info {
+  text-decoration: none;
+  background: rgba(0,0,0,0.15);
+}
+.more-info:link, .more-info:visited, .more-info:hover, .more-info:active {
+  color: white;
+  text-decoration: none;
+}
