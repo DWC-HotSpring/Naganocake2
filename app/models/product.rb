@@ -14,7 +14,7 @@ class Product < ApplicationRecord
 
     #一週間以内に登録されたか判定するメソッド
     def new_arrival?
-      self.created_at.between?(1.week.ago, Time.now)
+      self.created_at.between?(1.week.ago, Time.current)
     end
 
     #boolean型はpresence: trueにしてしまうと、falseをblank?メソッドでカラムを空だと認識してエラーとなる
