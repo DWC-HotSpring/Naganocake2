@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'homes/about'
-  get 'homes/top'
 
   #管理者用ルーティング
   namespace :admins do
@@ -16,11 +14,6 @@ Rails.application.routes.draw do
 
   # rootパス
   root 'homes#top'
-
-  authenticated :admin do
-    root 'admins#homes#top'
-  end
-
 
   #顧客用サイトのルーティング
   devise_for :customers
