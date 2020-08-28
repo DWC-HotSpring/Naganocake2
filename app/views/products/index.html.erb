@@ -1,13 +1,13 @@
 <div class="row justify-content-center">
 
-  <div class="col3">
+  <div class="col-2">
     <%= render 'shared/genre_search', genres: @genres %>
   </div>
 
 
-  <div class="col-8">
+  <div class="col-10">
 
-    <h2>
+    <div class="index-title">
       <span>
       <%#= ジャンル検索時の@genreがあればジャンル名一覧となる  %>
       <% if @genre %> 
@@ -31,7 +31,7 @@
           <option value="star">評価順</option>
         </select>
       </span>
-    </h2>
+    </div>
 
 
     <div class="row">

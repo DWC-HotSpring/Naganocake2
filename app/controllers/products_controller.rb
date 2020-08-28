@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
     @cart = @product.cart_items.new
     @genres = Genre.where(is_active: true)
     @post = Post.new
+    @similar_products = Product.where(genre_id: @product.genre_id)
   end
 
 

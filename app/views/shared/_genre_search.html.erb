@@ -1,15 +1,14 @@
- <div class="col-2 genre-card">
-    <div class="card" style="width: 20rem;">
-      <div class="card-header">
-        ジャンル検索
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to "全商品", products_path, :style=>"color:black" %></li>
-        <% genres.each do |genre| %>
-        <%#= ジャンルの名前をsearch_products_pathでparamsとして渡す  %>
-          <li class="list-group-item">
-            <%= link_to genre.name, search_products_path(name: "#{genre.name}"), method: :post, :style=>"color:black" %>
-          </li>
-        <% end %>
-    </div>
+<div class="sidebar" style="width: 20rem;">
+  <div class="genre-title text-center">
+    CATEGORY
   </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center"><%= link_to "全商品", products_path, :style=>"color:black" %></li>
+    <% genres.each do |genre| %>
+    <%#= ジャンルの名前をsearch_products_pathでparamsとして渡す  %>
+      <li class="list-group-item text-center">
+        <%= link_to genre.name, search_products_path(name: "#{genre.name}"), method: :post, :style=>"color:black" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

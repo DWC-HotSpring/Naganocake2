@@ -8,6 +8,9 @@ class PostsController < ApplicationController
           @product.update_attribute(:average_rate, @average_rate)
           flash.now[:notice] = "コメントしました"
         else
+          @cart = @product.cart_items.new
+          @genres = Genre.where(is_active: true)
+          flash.now[:alert] = "失敗"
           render 'products/show'
         end
     end

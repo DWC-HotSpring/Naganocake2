@@ -1,11 +1,8 @@
 <% if @product.posts.present? %>
+  <h4>カスタマーレビュー</h4>
   <% product.posts.each do |post| %>
     <div class="row posts">
-      <div class="col-md-6 mb-3">
         <div class=" posts-content">
-          <p><%= simple_time(post.created_at) %></p>
-          <h4 class="mb-3">評価：<%= post.rate %>点 | <%= post.title %></h4>
-          <p><%= post.content %></p>
           <!--星評価-->
          <div id="star-rate-<%= post.id %>"></div>
           <script>
@@ -20,11 +17,17 @@
           });
           </script>  
         <!--/星評価-->
-        <% if post.customer == current_customer %>
-          <%= link_to "削除", product_post_path(post.product, post), class:"btn-sm btn-danger destroy_book_32836", method: :delete,  remote: true, data: { confirm: '本当に削除しますか？' } %>
-        <% end %>
+        <p class="text-muted">
+          <%= simple_time(post.created_at) %>に投稿
+          <% if post.customer == current_customer %>
+            <%= link_to product_post_path(post.product, post), class:"destroy_book_32836", method: :delete,  remote: true, data: { confirm: '本当に削除しますか？' } do %>
+            <i class="fas fa-backspace delete-btn fa-2x"></i>
+            <% end %>
+          <% end %>
+        </p>
+        <p class="font-weight-bold"><%= post.title %></p>
+        <p><%= post.content %></p>
         </div>
-      </div>
     </div>
   <% end %>
 <% end %>
