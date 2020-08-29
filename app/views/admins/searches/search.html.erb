@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-12">
             <% if @model == "customer" %>
-                <h2>Customers</h2>
+                <h2>「<%= @content %>」の検索結果</h2>
                     <table class = "table">
                     <thead>
                         <tr>
@@ -20,14 +20,15 @@
                             </tr>
                         <% end %>
                     </tbody>
+                    </table>
             <% else %>
-                <h2>Products</h2>
+                <h2>「<%= @content %>」の検索結果</h2>
                     <table class ="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>商品名</th>
-                                <th>価格</th>
+                                <th>税抜価格</th>
                                 <th>ジャンル</th>
                                 <th>販売ステータス</th>
                             </tr>
